@@ -24,7 +24,7 @@ function Home() {
             </div>
       </section>
 
-      // LINHA 02 - CARDS
+      {/* LINHA 02 - CARDS */}
 
       <section className="bg-gray2 p-5">
             <div className="container">
@@ -78,7 +78,7 @@ function Home() {
             </div>
       </section>
 
-      // TUOR
+      {/* TUOR */}
 
       <section className="pt-3 space-bottom" id="tuor">
             <div className="container">
@@ -119,7 +119,7 @@ function Home() {
             </div>
       </section>
 
-      // CHAT
+      {/* CHAT */}
 
       <section className="bg-gray2">
             <div className="container pb-5">

@@ -1,17 +1,18 @@
 import { Link } from 'react-router-dom';
 
-import React, { useEffect, useState } from 'react';
+import { UserContext } from '../contexts/User';
+
+import React, { useEffect, useState, useContext } from 'react';
 
 const Navbar = () => {
 
-  const [session, setSession] = useState({});
+    const { session, setSession } = useContext(UserContext);
 
-    useEffect(() => {
-      setSession(JSON.parse(localStorage.getItem("session")));
-    }, []);
+    const sair = (e) => {
+      e.preventDefault()
 
-    const sair = () => {
       localStorage.removeItem("session");
+      setSession(null);
     }
 
   return (
@@ -51,7 +52,7 @@ const Navbar = () => {
                           </>
                         ) : (
                           <>
-                            <Link to={"/"} className="btn-outline-cyan" onClick={() => sair()("AAA")}>
+                            <Link to={"/"} className="btn-outline-cyan" onClick={(e) => sair(e)("AAA")}>
                               Sair
                             </Link>
                             <Link to={"/"} className="nav-link text-light">

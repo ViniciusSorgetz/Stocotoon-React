@@ -1,9 +1,12 @@
 import stocotoonAPI from '../axios/config';
+import { UserContext } from '../contexts/User';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { redirect, useNavigate } from 'react-router-dom';
 
 function Login() {
+
+  const { session, setSession } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -28,13 +31,15 @@ function Login() {
     try {
       const response = await stocotoonAPI.post("/user/login", userData);
 
-      const session = JSON.stringify({
+      const data = {
         UserName: response.data.name,
         UserId: response.data.id,
         UserToken: response.data.token,
-      })
-      localStorage.setItem("session", session);
-      window.location.reload();
+      };
+      console.log(data);
+      localStorage.setItem("session", JSON.stringify(data));
+      setSession(data);
+      navigate("/");
     } 
     catch (error) {
       setMessage(error.response.data.message);

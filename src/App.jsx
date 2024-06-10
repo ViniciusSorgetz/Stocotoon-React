@@ -1,23 +1,25 @@
 import { Outlet } from 'react-router-dom';
+import { useState } from 'react';
 
-import './App.css';
+import UserProvider from './contexts/User';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import { useState } from 'react';
+
+import './App.css';
 
 function App() {
-
-  const [isLogged, setIsLogged] = useState(false);
-
+  
   return (
-    <div className="App">
-        <Navbar isLogged={isLogged} setIsLogged={setIsLogged}/>
-        <div className="content mt-nav">
-            <Outlet/>
+    <UserProvider>
+      <div className="App">
+            <Navbar/>
+            <div className="content mt-nav">
+                <Outlet/>
+            </div>
+            <Footer/>
         </div>
-        <Footer/>
-    </div>
+    </UserProvider>
   )
 }
 
