@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { UserContext } from '../contexts/User';
 
 import React, { useEffect, useState, useContext } from 'react';
+import MenuIcon from '../assets/MenuIcon.svg'
 
 const Navbar = () => {
 
@@ -20,7 +21,7 @@ const Navbar = () => {
         <div className="container ">
           <Link to={"/"} className="navbar-brand text-cyan font-grand font-bold" id="navbar-logo">Stocotoon</Link>
           <button className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-label="Expand Navagation" id="menu-icon">
-                <img src="css/images/menu_FILL0_wght400_GRAD0_opsz24.svg" alt="menu"/>
+                <img src={MenuIcon} alt="menu"/>
           </button>
           <div className="collapse navbar-collapse text-center gap-3" id="nav">
                 <ul className="navbar-nav gap-md-2 gap-lg-5 gap-3 mx-auto">
