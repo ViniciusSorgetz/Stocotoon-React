@@ -9,7 +9,8 @@ import Home from './routes/Home';
 import Register from './routes/Register';
 import Login from './routes/Login';
 import Dashboard from './routes/Dashboard';
-import CriarEquipe from './routes/CriarEquipe';
+import CreateTeam from './routes/CreateTeam';
+import Team from './routes/Team';
 
 const router = createBrowserRouter([
   {
@@ -28,12 +29,16 @@ const router = createBrowserRouter([
         element: <Login/>
       },
       {
-        path: "/:UserId/dashboard",
+        path: "/dashboard/:UserId",
         element: <Dashboard/>
       },
       {
-        path: "/:UserId/dashboard/criar",
-        element: <CriarEquipe/>
+        path: "/dashboard/criar/:UserId",
+        element: <CreateTeam/>
+      },
+      {
+        path: "/team/:TeamId",
+        element: <Team/>
       }
     ]
   }

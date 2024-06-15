@@ -1,11 +1,12 @@
-import { Link } from 'react-router-dom';
-
 import { UserContext } from '../contexts/User';
 
 import React, { useEffect, useState, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
+
 import MenuIcon from '../assets/MenuIcon.svg'
 
 const Navbar = () => {
+    const navigate = useNavigate();
 
     const { session, setSession } = useContext(UserContext);
 
@@ -14,6 +15,8 @@ const Navbar = () => {
 
       localStorage.removeItem("session");
       setSession(null);
+
+      navigate("/")
     }
 
   return (
@@ -42,7 +45,7 @@ const Navbar = () => {
                       </li>
                       {session && 
                         <li className="nav-item pages-link">
-                          <Link to={`${session.UserId}/dashboard`} className="nav-link text-light">
+                          <Link to={`/dashboard/${session.UserId}`} className="nav-link text-light">
                               Dashboard
                           </Link>
                         </li>

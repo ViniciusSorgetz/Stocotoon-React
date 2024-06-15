@@ -79,6 +79,22 @@
       border-radius: 10px;
 }
 
+/* COMPONENT */
+
+.component{
+      display:flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: center;
+      transition: 0.3s;
+      height:100%;
+      text-align: center;
+  }
+  .component:hover{
+      transform: translateY(-6px);
+      cursor:pointer;
+  }
+
 /* OTHERS */
 
 #navbar-logo{

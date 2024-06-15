@@ -13,7 +13,7 @@ export const Dashboard = () => {
     const { session, setSession } = useContext(UserContext);
     const navigate = useNavigate();
 
-    const [teams, setTeams] = useState([]);
+    const [teams, setTeams] = useState(null);
 
     if(!session){
         navigate("/");
@@ -41,27 +41,27 @@ export const Dashboard = () => {
   return (
     <div className="container pb-5">
         <h1 className="text-light text-center pb-5 font-grand font-bold">Suas equipes</h1>
-        {teams.length === 0 ? (
-            <p>Carregando...</p>
-        ): 
-        (<div className="row">
-           {teams.map(team => (
-                <div className="col col-lg-2 col-sm-4">
-                    <div className="team">
-                        <h2 className="text-light h6 pb-2">{team.name}</h2>
-                        <img src={TeamIcon} alt="TeamIcon" />
+        {teams !== null && 
+            <div className="row">
+            {teams.map(team => (
+                    <div className="col col-lg-2 col-sm-4 pb-5 ">
+                        <div className="component">
+                            <h2 className="text-light h6 pb-2">{team.name}</h2>
+                            <Link to={`/team/${team.id}`}>
+                            <img src={TeamIcon} alt="TeamIcon"/>
+                            </Link>
+                        </div>
                     </div>
-                </div>
-           ))} 
-           <div className="col col-lg-2 col-sm-4">
-                    <div className="team">
+            ))} 
+                <div className="col col-lg-2 col-sm-4 pb-5 ">
+                    <div className="component">
                         <h2 className="text-light h6 pb-2">Criar equipe</h2>
-                        <Link to={`/${session.UerId}/dashboard/criar`}>
-                            <img src={Criar} alt="Criar" />
+                        <Link to={`/dashboard/criar/${session.UserId}`}>
+                            <img src={Criar} alt="Criar"/>
                         </Link>
                     </div>
                 </div>
-        </div>)}
+            </div>}
     </div>
   )
 }
