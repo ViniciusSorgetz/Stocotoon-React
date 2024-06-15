@@ -40,6 +40,13 @@ const Navbar = () => {
                                 Sobre nós
                             </Link>
                       </li>
+                      {session && 
+                        <li className="nav-item pages-link">
+                          <Link to={`${session.UserId}/dashboard`} className="nav-link text-light">
+                              Dashboard
+                          </Link>
+                        </li>
+                      }
                 </ul>
                 <div className="navbar-buttons navbar-nav gap-3 my-md-0 my-3 d-flex align-items-center">
                         {!session ? (
@@ -57,7 +64,7 @@ const Navbar = () => {
                               Sair
                             </Link>
                             <Link to={"/"} className="nav-link text-light">
-                              {session.UserName}
+                              {session.Username}
                             </Link>
                           </>
                         )}  

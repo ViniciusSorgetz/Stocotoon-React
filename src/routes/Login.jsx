@@ -2,7 +2,7 @@ import stocotoonAPI from '../axios/config';
 import { UserContext } from '../contexts/User';
 
 import { useEffect, useState, useContext } from 'react';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
@@ -32,7 +32,7 @@ function Login() {
       const response = await stocotoonAPI.post("/user/login", userData);
 
       const data = {
-        UserName: response.data.name,
+        Username: response.data.name,
         UserId: response.data.id,
         UserToken: response.data.token,
       };

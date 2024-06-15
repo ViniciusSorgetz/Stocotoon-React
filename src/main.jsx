@@ -8,6 +8,8 @@ import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
 import Home from './routes/Home';
 import Register from './routes/Register';
 import Login from './routes/Login';
+import Dashboard from './routes/Dashboard';
+import CriarEquipe from './routes/CriarEquipe';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
       {
         path: "/entrar",
         element: <Login/>
+      },
+      {
+        path: "/:UserId/dashboard",
+        element: <Dashboard/>
+      },
+      {
+        path: "/:UserId/dashboard/criar",
+        element: <CriarEquipe/>
       }
     ]
   }
