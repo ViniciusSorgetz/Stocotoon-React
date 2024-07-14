@@ -23,7 +23,7 @@ const DrawingProvider = ({children}) => {
                     Authorization: `Bearer ${session.UserToken}`,
                 }
             });
-            const content = data.data.content;
+            const content = JSON.parse(data.data.content);
             setHistory([{...content}]);
             setData(content);
             setLayers(content.layers);

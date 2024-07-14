@@ -1,6 +1,6 @@
 import { useState, useContext, useEffect } from "react";
 import { UserContext } from "../contexts/User";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import stocotoonAPI from "../axios/config";
 
 import Criar from "../assets/Criar.svg";
@@ -11,6 +11,9 @@ function Story() {
   const [chapters, setChapters] = useState(null);
   const [storyId, setStoryId] = useState();
 
+  // const location = useLocation();
+  // const { story } = location.state;
+  
   useEffect(() => {
     getData();
   }, []);
@@ -35,7 +38,7 @@ function Story() {
   return (
     <div className="container pb-5">
       <h1 className="text-light text-center pb-5 font-grand font-bold">
-        Nome da história
+        Capítulos da história
       </h1>
       {chapters !== null && (
         <div className="row">
@@ -43,7 +46,7 @@ function Story() {
             <div className="col col-lg-2 col-sm-4 pb-5" key={chapter.id}>
               <div className="component">
                 <h2 className="text-light h6"> {chapter.name} </h2>
-                <Link to={"/"}>
+                <Link to={`/chapter/${chapter.id}`}>
                   <img src={ChapterIcon} alt="Criar" />
                 </Link>
               </div>
@@ -51,8 +54,8 @@ function Story() {
           ))}
           <div className="col col-lg-2 col-sm-4 pb-5">
             <div className="component">
-              <h2 className="text-light h6">Criar história</h2>
-              <Link to={`/`}>
+              <h2 className="text-light h6">Criar capítulo</h2>
+              <Link to={`/chapter/criar/${storyId}`}>
                 <img src={Criar} alt="Criar" />
               </Link>
             </div>

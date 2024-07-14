@@ -1,73 +1,83 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App.jsx';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import App from "./App.jsx";
+import "./index.css";
 
-import { createBrowserRouter, RouterProvider, Route } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 
-import Home from './routes/Home';
-import Register from './routes/Register';
-import Login from './routes/Login';
-import Dashboard from './routes/Dashboard';
-import CreateTeam from './routes/CreateTeam';
-import Team from './routes/Team';
-import CreateStory from './routes/CreateStory';
-import Story from './routes/Story';
-import Chapter from './routes/Chapter';
-import DrawingApp from './routes/DrawingApp';
+import Home from "./routes/Home";
+import Register from "./routes/Register";
+import Login from "./routes/Login";
+import Dashboard from "./routes/Dashboard";
+import CreateTeam from "./routes/CreateTeam";
+import Team from "./routes/Team";
+import CreateStory from "./routes/CreateStory";
+import Story from "./routes/Story";
+import CreateChapter from "./routes/CreateChapter.jsx";
+import Chapter from "./routes/Chapter";
+import CreatePage from "./routes/CreatePage.jsx";
+import DrawingApp from "./routes/DrawingApp";
 
 const router = createBrowserRouter([
   {
-    element: <App/>,
+    element: <App />,
     children: [
       {
         path: "/",
-        element: <Home/>
+        element: <Home />,
       },
       {
         path: "/cadastro",
-        element: <Register/>
+        element: <Register />,
       },
       {
         path: "/entrar",
-        element: <Login/>
+        element: <Login />,
       },
       {
         path: "/dashboard/:UserId",
-        element: <Dashboard/>
+        element: <Dashboard />,
       },
       {
         path: "/dashboard/criar/:UserId",
-        element: <CreateTeam/>
+        element: <CreateTeam />,
       },
       {
         path: "/team/:TeamId",
-        element: <Team/>
+        element: <Team />,
       },
       {
         path: "/team/criar/:TeamId",
-        element: <CreateStory/>
+        element: <CreateStory />,
       },
       {
         path: "/story/:StoryId",
-        element: <Story/>
+        element: <Story />,
+      },
+      {
+        path: "/chapter/criar/:ChapterId",
+        element: <CreateChapter />,
       },
       {
         path: "/chapter/:ChapterId",
-        element: <Chapter/>
+        element: <Chapter />,
+      },
+      {
+        path: "/page/criar/:PageId",
+        element: <CreatePage />,
       },
       {
         path: "/drawingApp/:PictureId",
-        element: <DrawingApp/>
-      }
-    ]
-  }
-])
+        element: <DrawingApp />,
+      },
+    ],
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <RouterProvider router={router}>
-      <App/>
+      <App />
     </RouterProvider>
-  </React.StrictMode>,
-)
+  </React.StrictMode>
+);

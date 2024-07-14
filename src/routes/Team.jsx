@@ -43,7 +43,7 @@ function Team() {
                 <div className="col col-lg-2 col-sm-4 pb-5" key={story.id} >
                     <div className="component">
                         <h2 className="text-light h6">{story.name}</h2>
-                        <Link to={`/story/${story.id}`}>
+                        <Link to={`/story/${story.id}`} state={{ story: story.name }}>
                             <img src={StoryIcon} alt="TeamIcon"/>
                         </Link>
                     </div>
@@ -51,7 +51,7 @@ function Team() {
             ))} 
                 <div className="col col-lg-2 col-sm-4 pb-5">
                         <div className="component">
-                            <h2 className="text-light h6">Criar capítulo</h2>
+                            <h2 className="text-light h6">Criar história</h2>
                             <Link to={`/team/criar/${teamId}`}>
                                 <img src={Criar} alt="Criar"/>
                             </Link>
