@@ -59,7 +59,7 @@ function Team() {
                 </div>
             </div>}
     </div>
-  )
+  );
 }
 
 export default Team;

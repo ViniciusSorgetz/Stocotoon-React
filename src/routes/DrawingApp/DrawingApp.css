@@ -1,0 +1,183 @@
+.drawing-app{
+    padding: 0;
+    margin: 0;
+    margin-top: -45px;
+    margin-bottom: -100px;
+}
+
+/* drawin-app */
+
+#canvas{
+    cursor: crosshair;
+    background-color: #1f1f1f
+}
+.canvas-container{
+    display:flex;
+}
+.drawing-app{
+    width: fit-content;
+    height: 100dvh;
+}
+
+/* layers */
+
+.layer{
+    display: flex;
+    height: 38px;
+    align-items: center;
+    justify-content: space-between;
+    border-style: solid;
+    border-color: rgb(85, 85, 85);
+    border-width: 0px 0px 1px 0px;
+    width: 330px;
+}
+.layer *{
+    padding: 15px 10px 15px 15px;
+}
+.layer:hover{
+    border-color: #565656;
+    background-color: rgba(0, 0, 0, 0.247);
+}
+.layer-name:hover{
+    cursor:pointer;
+}
+.layer-name{
+    display:flex;
+    align-items: center;
+    height: 100%;
+    width: 90%;
+}
+.selectedLayer{
+    background-color: #1E1E1E;
+}
+.selectedLayer:hover{
+    background-color: #1E1E1E;
+}
+.hiddenLayer{
+    opacity: 50%;
+}
+
+input[type="checkbox"]:hover{
+    cursor: pointer;
+}
+.layer-buttons{
+    display: flex;
+    align-items: center;
+    border-style: solid;
+    border-color: #D9D9D9;
+    border-width: 1px 0 0px 0px;
+    padding: 10px;
+}
+
+.draw-button{
+    display: flex;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+}
+.draw-button:hover{
+    cursor:pointer;
+}
+.hide-button{
+    width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+}
+.fillButton{
+    border: none;
+    background: transparent;
+    color: white;
+    font-size: 1.1rem;
+}
+.fillButton:hover{
+    cursor: pointer;
+}
+.layers-container{
+    border-style: solid;
+    border-color: rgb(255, 255, 255);
+    border-width: 0px 1px 0px 0px;
+}
+.layers-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+}
+.hidden{
+    opacity: 0%;
+}
+
+/* tools */
+
+.tools-container{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-style: solid;
+    border-color: #D9D9D9;
+    border-width: 0px 0px 1px 0px;
+    padding: 4px;
+}
+#colorLabel{
+    height: 20px;
+    width: 20px;
+    border: 1px solid black;
+}
+
+.tools-container input[type=color]{
+	display: block;
+	width: 20px;
+	height: 20px;
+	border: none;
+    background-color: rgba(255, 255, 255, 0.041);
+}
+.tools-container input[type=color]:hover{
+	cursor: pointer;
+}
+.tools-container input[type="color"]::-webkit-color-swatch-wrapper {
+    border-radius: 2px;
+    padding: 0;
+    border-radius: 0;
+ }
+.tools-container input[type="color"]::-webkit-color-swatch {
+    border: none;
+ }
+ .rangeInput:hover{
+    cursor: pointer;
+ }
+.tool{
+    opacity: 60%;
+    transition: .2s;
+}
+.tool img{
+    padding: 5px;
+    width: 26px;
+    height: 26px;
+}
+.tool img:hover{
+    background-color: #35353598;
+    border-radius: 5px;
+}
+.selectedTool{
+    opacity: 100%;
+}
+.selectedTool img{
+    filter: invert(100%);
+    background-color: rgb(255, 0, 0) !important;
+    border-radius: 5px;
+}
+.unable{
+    opacity: 60%;
+}
+
+/* other */
+
+.layers-container,
+.tools-container{
+    font-family: Inter;
+    font-size: 12px;
+    color: white;
+    background-color: #121212;
+}
