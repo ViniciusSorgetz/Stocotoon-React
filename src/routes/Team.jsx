@@ -10,6 +10,7 @@ function Team() {
 
     const { session, setSession } = useContext(UserContext);
     const [stories, setStories] = useState(null);
+    const [teamId, setTeamId] = useState();
 
     useEffect(() => {
         getData();
@@ -18,6 +19,7 @@ function Team() {
     const getData = async () => {
         let teamId = window.location.href;
         teamId = teamId.split('/')[4];
+        setTeamId(teamId);
         try {
             const data = await stocotoonAPI.get(`/story/${teamId}`, {
                 headers: {
@@ -30,7 +32,7 @@ function Team() {
         catch (error) {
             console.log(error);
         }
-    }
+    };
 
   return (
     <div className="container pb-5">
@@ -38,10 +40,10 @@ function Team() {
         {stories !== null && 
             <div className="row">
             {stories.map(story => (
-                <div className="col col-lg-2 col-sm-4 pb-5">
+                <div className="col col-lg-2 col-sm-4 pb-5" key={story.id} >
                     <div className="component">
                         <h2 className="text-light h6">{story.name}</h2>
-                        <Link to={"/"}>
+                        <Link to={`/story/${story.id}`}>
                             <img src={StoryIcon} alt="TeamIcon"/>
                         </Link>
                     </div>
@@ -49,8 +51,8 @@ function Team() {
             ))} 
                 <div className="col col-lg-2 col-sm-4 pb-5">
                         <div className="component">
-                            <h2 className="text-light h6">Criar história</h2>
-                            <Link to={`/`}>
+                            <h2 className="text-light h6">Criar capítulo</h2>
+                            <Link to={`/team/criar/${teamId}`}>
                                 <img src={Criar} alt="Criar"/>
                             </Link>
                         </div>

@@ -44,7 +44,7 @@ export const Dashboard = () => {
         {teams !== null && 
             <div className="row">
             {teams.map(team => (
-                    <div className="col col-lg-2 col-sm-4 pb-5 ">
+                    <div className="col col-lg-2 col-sm-4 pb-5 " key={team.id}>
                         <div className="component">
                             <h2 className="text-light h6 pb-2">{team.name}</h2>
                             <Link to={`/team/${team.id}`}>

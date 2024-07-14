@@ -11,6 +11,8 @@ import Login from './routes/Login';
 import Dashboard from './routes/Dashboard';
 import CreateTeam from './routes/CreateTeam';
 import Team from './routes/Team';
+import CreateStory from './routes/CreateStory';
+import Story from './routes/Story';
 
 const router = createBrowserRouter([
   {
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
       {
         path: "/team/:TeamId",
         element: <Team/>
+      },
+      {
+        path: "/team/criar/:TeamId",
+        element: <CreateStory/>
+      },
+      {
+        path: "/story/:StoryId",
+        element: <Story/>
       }
     ]
   }
