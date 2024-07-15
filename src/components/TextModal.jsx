@@ -49,17 +49,17 @@ const TextModal = () => {
 
     return(
         <div className="overlay">
-            <div className="modal">
+            <div className="text-modal">
                 <form className="my-form">
-                    <div className="form-item">
+                    <div className="form-item text-light">
                         <label htmlFor="text">Texto: </label>
-                        <input type="text" id="text" className="bg-gray1" onChange={(e) => handleText(e)} value={textConfigs.text}/>
+                        <textarea type="text" id="text" className="bg-gray1 text-light" onChange={(e) => handleText(e)} value={textConfigs.text}/>
                     </div>
-                    <div className="form-item">
+                    <div className="form-item text-light">
                         <label htmlFor="fontSize">Tamanho: </label>
-                        <input type="number" min="24" max="90" value={textConfigs.fontSize} id="fontSize" className="bg-gray1" onChange={(e) => handleFontSize(e)}/>
+                        <input type="number" min="24" max="90" value={textConfigs.fontSize} id="fontSize" className="bg-gray1 text-light" onChange={(e) => handleFontSize(e)}/>
                     </div>
-                    <div className="form-color">
+                    <div className="form-color text-light">
                         <label htmlFor="fillStyle">Cor: </label>
                         <input type="color" id="fillStyle" value={textConfigs.fillStyle} onChange={(e) => handleFillStyle(e)}/>
                     </div>

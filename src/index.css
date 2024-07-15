@@ -72,7 +72,8 @@
       flex-direction: column;
       margin-bottom: 20px;
 }
-.form-item input{
+.form-item input,
+.form-item textarea{
       padding:8px 12px;
       margin-top: 3px;
       border: 1px solid gray;

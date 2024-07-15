@@ -39,8 +39,8 @@ const Navbar = () => {
                             </Link>
                       </li>
                       <li className="nav-item pages-link">
-                            <Link to={"/drawingApp/13"} className="nav-link text-light">
-                                DrawingApp
+                            <Link to={"/"} className="nav-link text-light">
+                                Sobre nós
                             </Link>
                       </li>
                       {session && 
