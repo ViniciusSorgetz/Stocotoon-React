@@ -26,12 +26,12 @@ export const Dashboard = () => {
 
     const getData = async () => {
         try {
-            const data = await stocotoonAPI.get(`/team/${session.UserId}`, {
+            const data = await stocotoonAPI.get(`/user/${session.UserId}`, {
                 headers: {
                     Authorization: `Bearer ${session.UserToken}`,
                 },
             });
-            setTeams(data.data);
+            setTeams(data.data.teams);
             
         } catch (error) {
             console.log(error);

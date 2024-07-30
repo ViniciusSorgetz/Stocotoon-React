@@ -13,7 +13,7 @@ function Story() {
 
   // const location = useLocation();
   // const { story } = location.state;
-  
+
   useEffect(() => {
     getData();
   }, []);
@@ -23,13 +23,13 @@ function Story() {
     storyId = storyId.split("/")[4];
     setStoryId(storyId);
     try {
-      const data = await stocotoonAPI.get(`/chapter/${storyId}`, {
+      const data = await stocotoonAPI.get(`/story/${storyId}`, {
         headers: {
           Authorization: `Bearer ${session.UserToken}`,
         },
       });
-      setChapters(data.data);
-      console.log(data.data);
+      setChapters(data.data.chapters);
+      console.log(data.data.chapters);
     } catch (error) {
       console.log(error);
     }

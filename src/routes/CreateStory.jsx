@@ -29,7 +29,7 @@ function CreateStory() {
                     Authorization: `Bearer ${session.UserToken}`
                 }
             });
-            navigate(`/team/${session.UserId}`);
+            navigate(`/team/${teamId}`);
         }
         catch (error) {
             setMessage(error.response.data.message);
