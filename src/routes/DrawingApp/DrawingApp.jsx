@@ -348,6 +348,7 @@ function DrawingApp() {
           layerIndex,
           layersQty
         };
+        console.log(newContent);
         await stocotoonAPI.put(`/picture/save`, {
           content: newContent,
           PageId: pageId 

@@ -20,12 +20,12 @@ function Chapter() {
     chapterId = chapterId.split("/")[4];
     setChapterId(chapterId);
     try {
-      const data = await stocotoonAPI.get(`/page/${chapterId}`, {
+      const data = await stocotoonAPI.get(`/chapter/${chapterId}`, {
         headers: {
           Authorization: `Bearer ${session.UserToken}`,
         },
       });
-      setPages(data.data);
+      setPages(data.data.pages);
       console.log(data.data);
     } catch (error) {
       console.log(error);

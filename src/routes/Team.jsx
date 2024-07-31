@@ -1,5 +1,4 @@
 import { useState, useContext, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import { Link } from "react-router-dom";
 import stocotoonAPI from "../axios/config";
@@ -13,13 +12,13 @@ function Team() {
   const [stories, setStories] = useState(null);
   const [teamId, setTeamId] = useState();
 
-  const { TeamId } = useParams();
-
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
+    let TeamId = window.location.href;
+    TeamId = TeamId.split("/")[4];
     try {
       const data = await stocotoonAPI.get(`/team/${TeamId}`, {
         headers: {
@@ -27,6 +26,7 @@ function Team() {
         },
       });
       setStories(data.data.stories);
+      setTeamId(TeamId);
       console.log(data.data.stories);
     } catch (error) {
       console.log(error);
