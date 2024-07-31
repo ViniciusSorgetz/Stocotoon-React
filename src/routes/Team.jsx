@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { UserContext } from "../contexts/User";
 import { Link } from "react-router-dom";
 import stocotoonAPI from "../axios/config";
@@ -7,21 +8,20 @@ import Criar from "../assets/Criar.svg";
 import StoryIcon from "../assets/StoryIcon.svg";
 
 function Team() {
+
   const { session, setSession } = useContext(UserContext);
   const [stories, setStories] = useState(null);
   const [teamId, setTeamId] = useState();
+
+  const { TeamId } = useParams();
 
   useEffect(() => {
     getData();
   }, []);
 
   const getData = async () => {
-    let teamId = window.location.href;
-    teamId = teamId.split("/")[4];
-    setTeamId(teamId);
     try {
-      console.log(teamId);
-      const data = await stocotoonAPI.get(`/team/${teamId}`, {
+      const data = await stocotoonAPI.get(`/team/${TeamId}`, {
         headers: {
           Authorization: `Bearer ${session.UserToken}`,
         },

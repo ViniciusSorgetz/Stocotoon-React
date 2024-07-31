@@ -40,15 +40,22 @@ const Navbar = () => {
                       </li>
                       <li className="nav-item pages-link">
                             <Link to={"/"} className="nav-link text-light">
-                                Sobre nós
+                              Sobre nós
                             </Link>
                       </li>
                       {session && 
+                        <>
                         <li className="nav-item pages-link">
                           <Link to={`/dashboard/${session.UserId}`} className="nav-link text-light">
-                              Dashboard
+                            Dashboard
                           </Link>
                         </li>
+                        <li className="nav-item pages-link" >
+                          <Link to={`/chat`}  className="nav-link text-light">
+                            Chat
+                          </Link>
+                        </li>
+                        </>
                       }
                 </ul>
                 <div className="navbar-buttons navbar-nav gap-3 my-md-0 my-3 d-flex align-items-center">

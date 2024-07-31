@@ -17,6 +17,7 @@ import CreateChapter from "./routes/CreateChapter.jsx";
 import Chapter from "./routes/Chapter";
 import CreatePage from "./routes/CreatePage.jsx";
 import DrawingApp from "./routes/DrawingApp";
+import Chat from "./routes/Chat";
 
 const router = createBrowserRouter([
   {
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
         path: "/drawingApp/:PictureId",
         element: <DrawingApp />,
       },
+      {
+        path: "/chat",
+        element: <Chat/>
+      }
     ],
   },
 ]);
