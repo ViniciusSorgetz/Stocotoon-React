@@ -43,7 +43,7 @@ function Register() {
   }
 
   return (
-    <div className="mb-5 ">
+    <div className="mb-5 mt-nav">
       <h2 className="text-center font-grand font-bold text-cyan">Criar uma conta</h2>
       <form className="my-form" onSubmit={(e) => createUser(e)}>
         <div className="form-item">

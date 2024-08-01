@@ -14,7 +14,7 @@ function App() {
     <UserProvider>
       <div className="App">
             <Navbar/>
-            <div className="content mt-nav">
+            <div className="content">
                 <Outlet/>
             </div>
             <Footer/>

@@ -34,7 +34,7 @@ function Team() {
   };
 
   return (
-    <div className="container pb-5">
+    <div className="container pb-5 mt-nav">
       <h1 className="text-light text-center pb-5 font-grand font-bold">
         Histórias da equipe
       </h1>

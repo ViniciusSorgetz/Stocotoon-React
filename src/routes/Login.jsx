@@ -48,7 +48,7 @@ function Login() {
   }
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 mt-nav">
       <h2 className="text-center font-grand font-bold text-cyan">Entrar</h2>
       <form className="my-form" onSubmit={(e) => loginUser(e)}>
         <div className="form-item">

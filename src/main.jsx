@@ -72,7 +72,7 @@ const router = createBrowserRouter([
         element: <DrawingApp />,
       },
       {
-        path: "/chat",
+        path: "/chat/:TeamName/:ChatIndex",
         element: <Chat/>
       }
     ],

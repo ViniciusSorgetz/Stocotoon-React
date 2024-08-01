@@ -37,7 +37,7 @@ function CreateStory() {
     }
 
     return(
-        <div className='mb-5'>
+        <div className='mb-5 mt-nav'>
             <h2 className="text-center font-grand font-bold text-cyan">Criar História</h2>
             <form className='my-form' onSubmit={(e) => criarHistoria(e)}>
                 <div className='form-item'>

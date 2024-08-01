@@ -34,7 +34,7 @@ function CreateChapter() {
   };
 
   return (
-    <div className="mb-5">
+    <div className="mb-5 mt-nav">
       <h2 className="text-center font-grand font-bold text-cyan">
         Criar capítulo
       </h2>

@@ -1,0 +1,35 @@
+.sidebar-time {
+    position: fixed;
+    min-height: calc(100vh - 70px);
+    margin-top: 70px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    bottom: 0;
+    top: 0;
+    direction: rtl;
+}
+
+.bg-preto {
+    background-color: #1E1E1E;
+}
+
+.sidebar-time ul {
+    direction: ltr;
+}
+
+.sidebar-time ul li img {
+    height: 50px;
+}
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track{
+    background: #303030;
+}
+
+::-webkit-scrollbar-thumb{
+    background: #121212;
+    border-radius: 5px;
+}
