@@ -1,15 +1,20 @@
 import "./chat.css";
 import TeamIcon from "../../assets/TeamIcon.svg";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { ChatContext } from "../../contexts/ChatContext";
 
 function SidebarTimes({ teams }) {
+
+  const { team, setTeam } = useContext(ChatContext);
+
   return (
-    <div class="sidebar-time d-flex flex-column flex-shrink-0 bg-preto">
-      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+    <div className="sidebar-time d-flex flex-column flex-shrink-0 bg-cinza">
+      <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
         {teams.map((team) => (
-          <li class="nav-item">
+          <li className="nav-item" key={team.id} onClick={() => setTeam(team)}>
             <Link
-              to={`/chat/${team.name}/0`}
+              to={`/chat/${team.name}`}
               className="nav-link py-3 border-bottom rounded-0"
             >
               <img src={TeamIcon} alt="Icone do time" />

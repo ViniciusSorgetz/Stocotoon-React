@@ -72,8 +72,20 @@ const router = createBrowserRouter([
         element: <DrawingApp />,
       },
       {
-        path: "/chat/:TeamName/:ChatIndex",
-        element: <Chat/>
+        path: "/chat/",
+        element: <Chat/>,
+        children: [
+          {
+            path: ":TeamName",
+            element: <Chat/>,
+            children: [
+              {
+                path: ":ChatIndex",
+                element: <Chat/>
+              }
+            ]
+          }
+        ]
       }
     ],
   },
