@@ -17,7 +17,6 @@ function Messages() {
     if(chatId){
         getData();
     }
-    console.log(messages);
   }, [chatId]);
 
   const getData = async () => {
@@ -26,6 +25,7 @@ function Messages() {
         Authorization: `Bearer ${session.UserToken}`,
       },
     });
+    console.log(data);
     setMessages(data.messages);
     console.log(data.messages);
   };
@@ -37,8 +37,7 @@ function Messages() {
       UserId: session.UserId,
       ChatId: chatId,
     };
-    console.log(newMessage);
-    console.log(chat);
+    setMessages(prevMessages => [...prevMessages, newMessage]);
     try {
       await stocotoonAPI.post("/message/send", newMessage, {
         headers: {
@@ -59,11 +58,11 @@ function Messages() {
       {chatId && chatId !== null ? (
         <div>
           <div className="mensagens">
-            {messages ? messages.map((message) => {
+            {messages ? messages.map((message) => (
                 <div key={message.id}>
                     <p>{message.content}</p>
                 </div>
-            }) : <p>sem mensagens</p>}
+            )) : <p>sem mensagens</p>}
           </div>
 
           <div className="enviar-mensagem d-flex">
@@ -89,6 +88,7 @@ function Messages() {
           Nenhum chat selecionado
         </p>
       )}
+    <button onClick={() => console.log(messages)}></button>
     </div>
   );
 }

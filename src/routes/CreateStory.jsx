@@ -3,6 +3,7 @@ import stocotoonAPI from '../axios/config';
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../contexts/User';
 import { useNavigate } from 'react-router-dom';
+import Form from "../components/Form";
 
 function CreateStory() {
     const navigate = useNavigate();
@@ -13,7 +14,7 @@ function CreateStory() {
     const [description, setDescription] = useState("");
     const [message, setMessage] = useState("");
     
-    const criarHistoria = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         let teamId = window.location.href;
         teamId = teamId.split('/')[5];
@@ -37,21 +38,19 @@ function CreateStory() {
     }
 
     return(
-        <div className='mb-5 mt-nav'>
-            <h2 className="text-center font-grand font-bold text-cyan">Criar História</h2>
-            <form className='my-form' onSubmit={(e) => criarHistoria(e)}>
-                <div className='form-item'>
-                    <label htmlFor="name" className='text-light'>Título da História</label>
-                    <input type="text" className='bg-gray1 text-light' name="name" placeholder='Digite o título da história' onChange={(e) => setName(e.target.value)} required/>
-                </div>
-                <div className='form-item'>
-                    <label htmlFor="description" className='text-light'>Descrição <span className="text-secondary">(opcional)</span> </label>
-                    <input type="text" className='bg-gray1 text-light' name='description' placeholder='Digite a descrição da história' onChange={(e) => setDescription(e.target.value)}/>
-                </div>
-                <button type='submit' className="btn-cyan font-inter font-bold text-gray1">Criar</button>
-                {message.length !== 0 && <p className='text-danger text-center lead'>{message}</p>}
-            </form>
-        </div>
+        <Form
+            setName={setName}
+            setDescription={setDescription}
+            handleSubmit={handleSubmit}
+            title="Criar História"
+            nameLabel="Nome da história"
+            descriptionLabel="Descrição da história"
+            namePlaceholder="Digite o nome da história"
+            descriptionPlaceholder="Digite a descrição da história"
+            hasDescription={true}
+            message={message}
+        >
+        </Form>
     )
 }
 
