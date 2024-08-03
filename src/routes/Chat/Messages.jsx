@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/User";
 import { ChatContext } from "../../contexts/ChatContext";
 import stocotoonAPI from "../../axios/config";
+import { io } from 'socket.io-client';
 
 function Messages() {
   const [messageContent, setMessageContent] = useState("");
@@ -13,11 +14,30 @@ function Messages() {
   const { chatId } = useContext(ChatContext);
   const [messages, setMessages] = useState(null);
 
+  const [socket, setSocket] = useState(null);
+
   useEffect(() => {
-    if (chatId) {
-      getData();
-    }
+    if(!chatId || !session) return;
+    getData();
+    const newSocket = io("http://localhost:4000", {
+      extraHeaders: {
+        token: session.UserToken,
+        ChatId: chatId
+      }
+    });
+    newSocket.on("connect", () => {
+      console.log(socket.id);
+    })
+    newSocket.emit("join-room", chatId);
+    setSocket(newSocket);
   }, [chatId]);
+
+  useEffect(() => {
+    if(!socket) return;
+    socket.on("recieve-message", newMessage => {
+      setMessages((prevMessages) => [newMessage, ...prevMessages]);
+    })
+  }, [socket]);
 
   const getData = async () => {
     const { data } = await stocotoonAPI.get(`/chat/${chatId}`, {
@@ -25,9 +45,7 @@ function Messages() {
         Authorization: `Bearer ${session.UserToken}`,
       },
     });
-    console.log(data);
     setMessages(data.messages.reverse());
-    console.log(data.messages);
   };
 
   const sendMessage = async (e) => {
@@ -41,6 +59,7 @@ function Messages() {
     };
     if (messageContent !== "") {
       setMessages((prevMessages) => [newMessage, ...prevMessages]);
+      socket.emit("send-message", newMessage, chatId);
     }
     try {
       await stocotoonAPI.post("/message/send", newMessage, {
