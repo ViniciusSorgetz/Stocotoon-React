@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { ChatContext } from "../../contexts/ChatContext";
 
 function SidebarChats() {
-  const { team, setChatId } = useContext(ChatContext);
+  const { team, setChatId, chatId } = useContext(ChatContext);
 
   const [chats, setChats] = useState(null);
 
@@ -31,13 +31,21 @@ function SidebarChats() {
           <ul className="nav nav-pills nav-flush flex-column mb-auto">
             {chats.map((chat) => (
               <Link
-                to={`/chat/${team.name}/${chats.findIndex((resp) => {return resp === chat})}`}
-                className="p-2 rounded-3 bg-light mb-3 text-dark text-decoration-none"
+                to={`/chat/${team.name}/${chats.findIndex((resp) => {
+                  return resp === chat;
+                })}`}
+                className={
+                  chatId === chat.id
+                    ? "chat-ativo p-2 rounded-3 mb-3 text-decoration-none"
+                    : "chat-inativo p-2 rounded-3 mb-3 text-decoration-none"
+                }
                 key={chat.id}
-                onClick={() => {setChatId(chat.id)}}
+                onClick={() => {
+                  setChatId(chat.id);
+                }}
               >
                 <li className="nav-item">
-                  <p className="fw-bold m-0"> { chat.name } </p>
+                  <p className="fw-bold m-0"> {chat.name} </p>
                   {/* <p className="m-0">
                     <span className="fw-bold">Vanessa: </span>Um dia desses a...
                   </p> */}

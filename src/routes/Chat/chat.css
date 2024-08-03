@@ -1,7 +1,7 @@
 .sidebar-time {
     min-height: calc(100vh - 70px);
     margin-top: 70px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
     bottom: 0;
     top: 0;
@@ -12,17 +12,18 @@
     min-height: calc(100vh - 70px);
     margin-top: 70px;
     width: 230px;
-    overflow-y: scroll;
+    overflow-y: auto;
     overflow-x: hidden;
 }
 
 .messages {
-    min-height: calc(100vh - 70px);
+    height: calc(100vh - 70px);
     margin-top: 70px;
-    overflow-y: scroll;
     overflow-x: hidden;
     width: 500px;
     resize: horizontal;
+    display: flex;
+    justify-content: space-between;
 }
 
 .bg-cinza {
@@ -45,10 +46,67 @@
     font-size: 14px;
 }
 
+.chat-ativo{
+    background-color: white;
+    color: black;
+}
+
+.chat-inativo{
+    background-color: #A3A3A3;
+    color: #232323;
+}
+
+.mensagens{
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.mensagem-outro{
+    width: fit-content;
+}
+
+.mensagem-outro .conteudo{
+    background-color: white;
+}
+
+.mensagem-outro .orientacao{
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.mensagem-outro p{
+    margin: 0;
+}
+
+.mensagem-proprio{
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    align-self: flex-end;
+}
+
+.mensagem-proprio .conteudo{
+    background-color: #89F8FF;
+}
+
+.mensagem-proprio .orientacao{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 5px;
+}
+
+.mensagem-proprio p{
+    margin: 0;
+}
+
 .enviar-mensagem{
     height: fit-content;
     border-radius: 10px;
     margin-top: auto;
+    padding-top: 10px;
 }
 
 .enviar-mensagem textarea{
@@ -77,6 +135,6 @@
 }
 
 ::-webkit-scrollbar-thumb{
-    background: #121212;
+    background: #4e4e4e;
     border-radius: 5px;
 }

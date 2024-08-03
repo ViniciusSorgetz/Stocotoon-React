@@ -14,8 +14,8 @@ function Messages() {
   const [messages, setMessages] = useState(null);
 
   useEffect(() => {
-    if(chatId){
-        getData();
+    if (chatId) {
+      getData();
     }
   }, [chatId]);
 
@@ -26,24 +26,29 @@ function Messages() {
       },
     });
     console.log(data);
-    setMessages(data.messages);
+    setMessages(data.messages.reverse());
     console.log(data.messages);
   };
 
   const sendMessage = async (e) => {
     e.preventDefault();
     const newMessage = {
+      nick: session.Username,
       content: messageContent,
       UserId: session.UserId,
       ChatId: chatId,
+      createdAt: Date.now(),
     };
-    setMessages(prevMessages => [...prevMessages, newMessage]);
+    if (messageContent !== "") {
+      setMessages((prevMessages) => [newMessage, ...prevMessages]);
+    }
     try {
       await stocotoonAPI.post("/message/send", newMessage, {
         headers: {
           Authorization: `Bearer ${session.UserToken}`,
         },
       });
+      setMessageContent("");
       setErrorMessage("");
     } catch (error) {
       setErrorMessage(error.response.data.message);
@@ -51,21 +56,45 @@ function Messages() {
   };
 
   return (
-    <div className="messages d-flex flex-column bg-preto p-3">
-      {errorMessage.length !== 0 && (
-        <p className="text-danger text-center lead">{errorMessage}</p>
-      )}
+    <div>
       {chatId && chatId !== null ? (
-        <div>
-          <div className="mensagens">
-            {messages ? messages.map((message) => (
-                <div key={message.id}>
+        <div className="messages d-flex flex-column  bg-cinza pb-3">
+          {errorMessage.length !== 0 && (
+            <p className="text-danger text-center lead">{errorMessage}</p>
+          )}
+          <div className="mensagens ms-3">
+            {messages ? (
+              messages.map((message) => (
+                <div
+                  className={
+                    session.Username === message.nick
+                      ? "mensagem-proprio me-2"
+                      : "mensagem-outro me-2"
+                  }
+                  key={message.id}
+                >
+                  <div className="orientacao text-light">
+                    <p className="fw-bold"> {message.nick} </p>
+                    <p> • </p>
+                    <p>
+                      {" "}
+                      {new Date(message.createdAt).toLocaleTimeString("pt-BR", {
+                        hour: "2-digit",
+                        minute: "2-digit",
+                      })}
+                    </p>
+                  </div>
+                  <div className="conteudo px-3 py-2 mb-3 rounded-3">
                     <p>{message.content}</p>
+                  </div>
                 </div>
-            )) : <p>sem mensagens</p>}
+              ))
+            ) : (
+              <p>sem mensagens</p>
+            )}
           </div>
 
-          <div className="enviar-mensagem d-flex">
+          <div className="enviar-mensagem d-flex px-3">
             <textarea
               placeholder="Escreva sua mensagem aqui"
               onChange={(e) => setMessageContent(e.target.value)}
@@ -88,7 +117,6 @@ function Messages() {
           Nenhum chat selecionado
         </p>
       )}
-    <button onClick={() => console.log(messages)}></button>
     </div>
   );
 }

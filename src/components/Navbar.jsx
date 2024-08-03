@@ -12,11 +12,6 @@ const Navbar = () => {
 
   const [teams, setTeams] = useState(null);
 
-  if (!session) {
-    navigate("/");
-    return <h2 className="text-light p-5 text-center mt-nav">Sem sessão</h2>;
-  }
-
   const sair = (e) => {
     e.preventDefault();
 
