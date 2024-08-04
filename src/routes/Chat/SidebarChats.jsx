@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from "react";
 import { ChatContext } from "../../contexts/ChatContext";
 
 function SidebarChats() {
-  const { team, setChatId, chatId } = useContext(ChatContext);
+  const { team, setChatId, chatId, socket } = useContext(ChatContext);
 
   const [chats, setChats] = useState(null);
 
@@ -41,6 +41,10 @@ function SidebarChats() {
                 }
                 key={chat.id}
                 onClick={() => {
+                  if(chat.id !== chatId){
+                    socket.emit("leave-room", chatId);
+                    socket.emit("join-room", chat.id);
+                  }
                   setChatId(chat.id);
                 }}
               >

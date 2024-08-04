@@ -1,12 +1,13 @@
 import { useState, useContext, useEffect } from "react";
-import { UserContext } from "../contexts/User";
+import { UserContext } from "../../contexts/User";
 import { Link, useLocation } from "react-router-dom";
-import stocotoonAPI from "../axios/config";
+import stocotoonAPI from "../../axios/config";
 
-import Criar from "../assets/Criar.svg";
-import ChapterIcon from "../assets/ChapterIcon.svg";
+import Criar from "../../assets/Criar.svg";
+import ChapterIcon from "../../assets/ChapterIcon.svg";
 
 function Story() {
+  
   const { session, setSession } = useContext(UserContext);
   const [chapters, setChapters] = useState(null);
   const [storyId, setStoryId] = useState();

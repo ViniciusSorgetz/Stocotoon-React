@@ -1,8 +1,8 @@
-import stocotoonAPI from '../axios/config';
+import stocotoonAPI from '../../axios/config';
 import React, { useState, useContext, useEffect } from 'react';
-import { UserContext } from '../contexts/User';
+import { UserContext } from '../../contexts/User';
 import { useNavigate } from 'react-router-dom';
-import Form from '../components/Form';
+import Form from '../../components/Form';
 
 function CreateTeam() {
   

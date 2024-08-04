@@ -4,32 +4,18 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/User";
 import { ChatContext } from "../../contexts/ChatContext";
 import stocotoonAPI from "../../axios/config";
-import { io } from 'socket.io-client';
 
 function Messages() {
   const [messageContent, setMessageContent] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const { session } = useContext(UserContext);
-  const { chatId } = useContext(ChatContext);
+  const { chatId, socket } = useContext(ChatContext);
   const [messages, setMessages] = useState(null);
-
-  const [socket, setSocket] = useState(null);
 
   useEffect(() => {
     if(!chatId || !session) return;
     getData();
-    const newSocket = io("http://localhost:4000", {
-      extraHeaders: {
-        token: session.UserToken,
-        ChatId: chatId
-      }
-    });
-    newSocket.on("connect", () => {
-      console.log(socket.id);
-    })
-    newSocket.emit("join-room", chatId);
-    setSocket(newSocket);
   }, [chatId]);
 
   useEffect(() => {

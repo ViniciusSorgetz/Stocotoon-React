@@ -14,19 +14,12 @@ const Chat = () => {
   const { team } = useContext(ChatContext);
   const [teams, setTeams] = useState([]);
   // const [team, setTeam] = useState({});
-  const [socket, setSocket] = useState(null);
 
   const location = useLocation();
 
   useEffect(() => {
     getData();
   }, []);
-
-  useEffect(() => {
-    if (!location.pathname.includes("chat")) return;
-    const newSocket = io("http://localhost:4000");
-    setSocket(newSocket);
-  }, [location]);
 
   const getData = async () => {
     const { data } = await stocotoonAPI.get(`/user/${session.UserId}`, {

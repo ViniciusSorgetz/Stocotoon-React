@@ -1,8 +1,8 @@
 const Form = (props) => {
 
     const {
-        setName, 
-        setDescription,
+        name, setName, 
+        description, setDescription,
         handleSubmit,
         title,
         nameLabel,
@@ -19,12 +19,26 @@ const Form = (props) => {
             <form className='my-form' onSubmit={handleSubmit}>
                 <div className='form-item'>
                     <label htmlFor="name" className='text-light'>{nameLabel}</label>
-                    <input type="text" className='bg-gray1 text-light' name="name" placeholder={namePlaceholder} onChange={(e) => setName(e.target.value)} required/>
+                    <input 
+                        type="text" 
+                        className='bg-gray1 text-light' 
+                        name="name" 
+                        placeholder={namePlaceholder} 
+                        onChange={(e) => setName(e.target.value)} required
+                        value={name && name}
+                    />
                 </div>
                 {hasDescription && 
                     <div className='form-item'>
                         <label htmlFor="description" className='text-light'>{descriptionLabel}<span className="text-secondary">(opcional)</span> </label>
-                        <input type="text" className='bg-gray1 text-light' name='description' placeholder={descriptionPlaceholder} onChange={(e) => setDescription(e.target.value)}/>
+                        <input 
+                            type="text" 
+                            className='bg-gray1 text-light' 
+                            name='description' 
+                            placeholder={descriptionPlaceholder} 
+                            onChange={(e) => setDescription(e.target.value)}
+                            value={description && description}
+                        />
                     </div>
                 }
                 <button type='submit' className="btn-cyan font-inter font-bold text-gray1">Criar</button>
