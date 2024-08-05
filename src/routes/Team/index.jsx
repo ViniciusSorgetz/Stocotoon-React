@@ -20,6 +20,7 @@ function Team() {
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const [createMode, setCreateMode] = useState(false);
+  const [contextMenuOpen, setContextMenuOpen] = useState(false);
 
   useEffect(() => {
     getData();
@@ -126,6 +127,8 @@ function Team() {
                 setStoryId(story.id)
                 setCreateMode(false)
                 setModal(true)}}
+              contextMenuOpen={contextMenuOpen} 
+              setContextMenuOpen={setContextMenuOpen}
             />
           ))}
           <CreateItem handleClick={() => {
