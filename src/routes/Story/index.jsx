@@ -15,6 +15,29 @@ function Story() {
   // const location = useLocation();
   // const { story } = location.state;
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    let teamId = window.location.href;
+    teamId = teamId.split('/')[5];
+    console.log(teamId);
+    const story = {
+        name,
+        description,
+        TeamId: teamId
+    }
+    try {
+        await stocotoonAPI.post("/story/create", story, {
+            headers: {
+                Authorization: `Bearer ${session.UserToken}`
+            }
+        });
+        navigate(`/team/${teamId}`);
+    }
+    catch (error) {
+        setMessage(error.response.data.message);
+    }
+}
+
   useEffect(() => {
     getData();
   }, []);

@@ -1,4 +1,9 @@
 #form-modal{
-    z-index: 100;
-    display: block;
+    background-color: rgba(0, 0, 0, 0.541);
+}
+#modal-content{
+    background-color: #181818 !important;
+}
+#form-modal-footer, #form-modal-header{
+    border: none;
 }

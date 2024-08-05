@@ -53,6 +53,16 @@
       padding:3px 12px;
       transition: 0.3s;
 }
+.btn-outline-gray{
+      height:32px;
+      text-decoration: none;
+      background-color: transparent;
+      color: #979797;
+      border-radius: 5px;
+      border: 1px solid #979797;
+      padding:3px 12px;
+      transition: 0.3s;
+}
 .btn-cyan:hover{
       transform: translateY(-3px);
 }
