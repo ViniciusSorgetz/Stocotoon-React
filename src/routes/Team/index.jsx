@@ -7,11 +7,13 @@ import FormModal from "../../components/FormModal";
 import Item from "../../components/Item";
 import StoryIcon from "../../assets/StoryIcon.svg";
 import CreateItem from "../../components/CreateItem";
+import ItemContextMenu from "../../components/ItemContextMenu";
 
 function Team() {
 
-  const { session, setSession } = useContext(UserContext);
+  const {session, setSession } = useContext(UserContext);
   const [stories, setStories] = useState(null);
+  const [currentStory, setCurrentStory] = useState({});
   const [teamId, setTeamId] = useState(null);
   const [storyId, setStoryId] = useState(null);
   const [modal, setModal] = useState(false);
@@ -20,7 +22,10 @@ function Team() {
   const [description, setDescription] = useState("");
   const [message, setMessage] = useState("");
   const [createMode, setCreateMode] = useState(false);
-  const [contextMenuOpen, setContextMenuOpen] = useState(false);
+
+  const [contextMenu, setContextMenu] = useState(false);
+  const [positionX, setPositionX] = useState(0);
+  const [positionY, setPositionY] = useState(0)
 
   useEffect(() => {
     getData();
@@ -47,6 +52,7 @@ function Team() {
     setModal(false);
     setName("");
     setDescription("");
+    setMessage("");
   }
 
   const createStory = async () => {
@@ -97,6 +103,21 @@ function Team() {
 
   return (
     <div className="container pb-5 mt-nav">
+      {contextMenu && 
+        <ItemContextMenu
+          setContextMenu={setContextMenu}
+          positionX={positionX}
+          positionY={positionY}
+          name={"story"}
+          type={currentStory}
+          handleClick={() => {
+            setName(currentStory.name)
+            setDescription(currentStory.description)
+            setStoryId(currentStory.id)
+            setCreateMode(false)
+            setModal(true)}}
+        />
+      }
       {modal && <FormModal 
         hide={closeModal}
         setName={setName} name={name}
@@ -119,16 +140,13 @@ function Team() {
           {stories.map((story) => (
             <Item 
               name={"story"} 
+              setName={setName}
               type={story} 
               icon={StoryIcon}
-              handleClick={() => {
-                setName(story.name)
-                setDescription(story.description)
-                setStoryId(story.id)
-                setCreateMode(false)
-                setModal(true)}}
-              contextMenuOpen={contextMenuOpen} 
-              setContextMenuOpen={setContextMenuOpen}
+              setPositionX={setPositionX}
+              setPositionY={setPositionY}
+              setContextMenu={setContextMenu}
+              setCurrentStory={setCurrentStory}
             />
           ))}
           <CreateItem handleClick={() => {

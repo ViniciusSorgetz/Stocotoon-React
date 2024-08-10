@@ -1,9 +1,16 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 
 const ItemContextMenu = (props) => {
 
-    const {name, type, setContextMenu} = props;
+    const {
+        name, type, 
+        setContextMenu, 
+        handleClick, 
+        positionX, positionY
+    } = props;
+    
     const contextMenuRef = useRef();
 
     useEffect(() => {
