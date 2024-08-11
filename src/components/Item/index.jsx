@@ -3,12 +3,17 @@ import { Link } from 'react-router-dom';
 
 const Item = (props) => {
     
-    const { type, setType, name, icon, handleClick, setPositionX, setPositionY, setContextMenu, setCurrentStory } = props;
+    const {
+        type, setType, 
+        name, icon, handleClick, 
+        setPositionX, setPositionY, 
+        setContextMenu, setCurrentItem 
+    } = props;
 
     const handleOnContextMenu = (e) => {
         e.preventDefault();
         console.log(type);
-        setCurrentStory(type);
+        setCurrentItem(type);
         setContextMenu(true);
         setPositionX(e.clientX);
         setPositionY(e.clientY);

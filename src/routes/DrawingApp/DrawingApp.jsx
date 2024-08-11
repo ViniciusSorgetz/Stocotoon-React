@@ -365,9 +365,9 @@ function DrawingApp() {
   }
   
   return (
-    <div className="drawing-app">
+    <div className="drawing-app mt-nav">
       {textModal && <TextModal/>}
-      <div className="tools-container">
+      <div className="tools-container mt-nav">
         <button
           className="draw-button tool"
           onClick={saveProject}

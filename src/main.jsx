@@ -10,7 +10,7 @@ import Register from "./routes/Register";
 import Login from "./routes/Login";
 import Dashboard from "./routes/Dashboard";
 import CreateTeam from "./routes/Team/CreateTeam.jsx";
-import Team from "./routes/Team/index.jsx";
+import Team from "./routes/Team";
 import CreateStory from "./routes/Story/CreateStory";
 import Story from "./routes/Story";
 import CreateChapter from "./routes/CreateChapter.jsx";
