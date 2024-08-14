@@ -49,12 +49,12 @@ const Chat = () => {
   };
 
   return (
-    <div className="d-flex flex-row">
+    <div className="father-container d-flex flex-row">
       <SidebarTimes teams={teams} />
       <SidebarChats teams={teams} />
       <Messages />
 
-      <div className="mt-nav">
+      {/* <div className="mt-nav">
         <p className="text-light">Lista de times</p>
         <ul>
           {teams.map((team) => (
@@ -67,7 +67,7 @@ const Chat = () => {
             </li>
           ))}
         </ul>
-      </div>
+      </div> */}
       {/* <div style={{ marginLeft: "400px"}}>
         <p className="text-light">Lista de chats</p>
         {team.chats && (

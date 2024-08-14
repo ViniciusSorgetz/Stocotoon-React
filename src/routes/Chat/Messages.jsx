@@ -4,6 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../contexts/User";
 import { ChatContext } from "../../contexts/ChatContext";
 import stocotoonAPI from "../../axios/config";
+import { useParams } from "react-router-dom";
 
 function Messages() {
   const [messageContent, setMessageContent] = useState("");
@@ -12,6 +13,7 @@ function Messages() {
   const { session } = useContext(UserContext);
   const { chatId, socket } = useContext(ChatContext);
   const [messages, setMessages] = useState(null);
+  let { ChatIndex } = useParams();
 
   useEffect(() => {
     if(!chatId || !session) return;
@@ -61,8 +63,8 @@ function Messages() {
   };
 
   return (
-    <div>
-      {chatId && chatId !== null ? (
+    <div className="messages-container" style={{ backgroundColor: "#1E1E1E"}}>
+      {chatId && ChatIndex && chatId !== null ? (
         <div className="messages d-flex flex-column  bg-cinza pb-3">
           {errorMessage.length !== 0 && (
             <p className="text-danger text-center lead">{errorMessage}</p>
