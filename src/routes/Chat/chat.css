@@ -16,12 +16,16 @@
     overflow-x: hidden;
 }
 
+.messages-container{
+    display: flex;
+    width: 100%;
+}
+
 .messages {
     height: calc(100vh - 70px);
     margin-top: 70px;
+    width: 100%;
     overflow-x: hidden;
-    width: 500px;
-    resize: horizontal;
     display: flex;
     justify-content: space-between;
 }
