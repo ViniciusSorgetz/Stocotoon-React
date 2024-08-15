@@ -13,6 +13,7 @@ function Team() {
 
   const {session, setSession } = useContext(UserContext);
   const [stories, setStories] = useState([]);
+  const [teamName, setTeamName] = useState("");
   const [currentStory, setCurrentStory] = useState({});
   const [teamId, setTeamId] = useState(null);
   const [storyId, setStoryId] = useState(null);
@@ -41,6 +42,7 @@ function Team() {
         },
       });
       setStories(data.data.stories);
+      setTeamName(data.data.name);
       setTeamId(TeamId);
       setModal(false);
     } catch (error) {
@@ -133,7 +135,7 @@ function Team() {
         button={createMode ? "Criar" : "Editar"}
       />}
       <h1 className="text-light text-center pb-5 font-grand font-bold">
-        Histórias da equipe
+        {teamName}
       </h1>
       <div className="row">
         {stories.map((story) => (

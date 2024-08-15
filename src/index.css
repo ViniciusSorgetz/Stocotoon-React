@@ -30,6 +30,9 @@
 .text-cyan:active{
       color:#00F0FF;
 }
+.error-message{
+      font-weight: 450;
+}
 
 /* BUTTONS */
 

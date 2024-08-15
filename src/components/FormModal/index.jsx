@@ -32,31 +32,31 @@ const FormModal = (props) => {
                         </div>
                         <div className="modal-body">
                             <form className="my-form">
-                            <div className='form-item'>
-                                <label htmlFor="name" className='text-light'>{nameLabel}</label>
-                                <input 
-                                    type="text" 
-                                    className='bg-gray1 text-light' 
-                                    name="name" 
-                                    placeholder={namePlaceholder} 
-                                    onChange={(e) => setName(e.target.value)} required
-                                    value={name}
-                                />
-                            </div>
-                            {hasDescription && 
                                 <div className='form-item'>
-                                    <label htmlFor="description" className='text-light'>{descriptionLabel}<span className="text-secondary">(opcional)</span> </label>
+                                    <label htmlFor="name" className='text-light'>{nameLabel}</label>
                                     <input 
                                         type="text" 
                                         className='bg-gray1 text-light' 
-                                        name='description' 
-                                        placeholder={descriptionPlaceholder} 
-                                        onChange={(e) => setDescription(e.target.value)}
-                                        value={description}
+                                        name="name" 
+                                        placeholder={namePlaceholder} 
+                                        onChange={(e) => setName(e.target.value)} required
+                                        value={name}
                                     />
-                                </div>}
+                                </div>
+                                {hasDescription && 
+                                    <div className='form-item'>
+                                        <label htmlFor="description" className='text-light'>{descriptionLabel}<span className="text-secondary">(opcional)</span> </label>
+                                        <input 
+                                            type="text" 
+                                            className='bg-gray1 text-light' 
+                                            name='description' 
+                                            placeholder={descriptionPlaceholder} 
+                                            onChange={(e) => setDescription(e.target.value)}
+                                            value={description}
+                                        />
+                                    </div>}
                             </form>
-                            {message.length !== 0 && <p className='text-danger text-center lead'>{message}</p>}
+                            {message.length !== 0 && <p className='text-danger text-center lead error-message'>{message}</p>}
                         </div>
                         <div className="modal-footer" id="form-modal-footer">
                             <button type="button" className="btn-outline-gray" onClick={closeModal}>Cancelar</button>

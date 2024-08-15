@@ -61,7 +61,7 @@ function Login() {
         </div>
         <button type="submit" className="btn-cyan font-inter font-bold text-gray1">Entrar</button>
       </form>
-      {message.length !== 0 && <p className="text-light text-center lead">{message}</p>}
+      {message.length !== 0 && <p className="text-danger text-center lead error-message">{message}</p>}
     </div>
   )
 }

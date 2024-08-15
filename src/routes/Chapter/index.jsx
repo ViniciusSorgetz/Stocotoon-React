@@ -5,17 +5,17 @@ import stocotoonAPI from "../../axios/config";
 
 import FormModal from "../../components/FormModal";
 import Item from "../../components/Item";
-import ChapterIcon from "../../assets/ChapterIcon.svg";
+import PageIcon from "../../assets/PageIcon.svg";
 import CreateItem from "../../components/CreateItem";
 import ItemContextMenu from "../../components/ItemContextMenu";
 
 function Team() {
 
   const {session, setSession } = useContext(UserContext);
-  const [chapters, setChapters] = useState([]);
-  const [storyName, setStoryName] = useState("");
-  const [currentChapter, setCurrentChapter] = useState({});
-  const [storyId, setStoryId] = useState(null);
+  const [pages, setPages] = useState([]);
+  const [chapterName, setChapterName] = useState("");
+  const [currentPage, setCurrentPage] = useState({});
+  const [chapterId, setChapterId] = useState(null);
   const [modal, setModal] = useState(false);
 
   const [name, setName] = useState("");
@@ -32,18 +32,18 @@ function Team() {
   }, []);
 
   const getData = async () => {
-    let storyId = window.location.href;
-    storyId = storyId.split("/")[4];
-    setStoryId(storyId);
+    let chapterId = window.location.href;
+    chapterId = chapterId.split("/")[4];
+    setChapterId(chapterId);
     try {
-      const data = await stocotoonAPI.get(`/story/${storyId}`, {
+      const data = await stocotoonAPI.get(`/chapter/${chapterId}`, {
         headers: {
           Authorization: `Bearer ${session.UserToken}`,
         },
       });
-      setChapters(data.data.chapters);
-      setStoryName(data.data.name)
-      console.log(data.data.chapters);
+      setPages(data.data.pages);
+      setChapterName(data.data.name);
+      console.log(data.data);
     } catch (error) {
       console.log(error);
     }
@@ -56,19 +56,18 @@ function Team() {
     setMessage("");
   }
 
-  const createChapter = async () => {
-    const chapter = {
+  const createPage = async () => {
+    const page = {
         name,
-        description,
-        StoryId: storyId
+        ChapterId: chapterId
     }
     try {
-        const resp = await stocotoonAPI.post("/chapter/create", chapter, {
+        const resp = await stocotoonAPI.post("/page/create", page, {
             headers: {
                 Authorization: `Bearer ${session.UserToken}`
             }
         });
-        setChapters(prevChapters => [...prevChapters, resp.data.chapter]);
+        setPages(prevPages => [...prevPages, resp.data.page]);
         closeModal();
     }
     catch (error) {
@@ -76,7 +75,7 @@ function Team() {
     }
   } 
 
-  const editChapter = async () => {
+  const eidtPage = async () => {
     console.log("editando...")
   }
 
@@ -87,12 +86,12 @@ function Team() {
           setContextMenu={setContextMenu}
           positionX={positionX}
           positionY={positionY}
-          name={"chapter"}
-          type={currentChapter}
+          name={"drawingApp"}
+          type={currentPage}
           handleClick={() => {
-            setName(currentChapter.name)
-            setDescription(currentChapter.description)
-            setStoryId(currentChapter.id)
+            setName(currentPage.name)
+            setDescription(currentPage.description)
+            setStoryId(currentPage.id)
             setCreateMode(false)
             setModal(true)}}
         />
@@ -101,33 +100,33 @@ function Team() {
         hide={closeModal}
         setName={setName} name={name}
         setDescription={setDescription} description={description}
-        handleSubmit={createMode ? createChapter : editChapter}
-        title="Criar Capítulo"
-        nameLabel="Nome do capítulo"
-        descriptionLabel="Descrição do capítulo"
-        namePlaceholder="Digite o nome do capítulo"
-        descriptionPlaceholder="Digite a descrição do capítulo"
+        handleSubmit={createMode ? createPage : eidtPage}
+        title="Criar Página"
+        nameLabel="Nome da página"
+        descriptionLabel="Descrição da página"
+        namePlaceholder="Digite o nome da página"
+        descriptionPlaceholder="Digite a descrição da página"
         hasDescription={true}
         message={message}
         button={createMode ? "Criar" : "Editar"}
       />}
       <h1 className="text-light text-center pb-5 font-grand font-bold">
-        {storyName}
+        {chapterName}
       </h1>
       <div className="row">
-        {chapters.map((chapter) => (
+        {pages.map((page) => (
           <Item 
-            name={"chapter"} 
+            name={"drawingApp"} 
             setName={setName}
-            type={chapter} 
-            icon={ChapterIcon}
+            type={page} 
+            icon={PageIcon}
             setPositionX={setPositionX}
             setPositionY={setPositionY}
             setContextMenu={setContextMenu}
-            setCurrentItem={setCurrentChapter}
+            setCurrentItem={setCurrentPage}
           />
         ))}
-        <CreateItem name={"capítulo"} handleClick={() => {
+        <CreateItem name={"página"} handleClick={() => {
           setCreateMode(true)
           setModal(true)}}/>
       </div>

@@ -517,7 +517,7 @@ function DrawingApp() {
         <canvas
           id="canvas"
           width="800"
-          height="500"
+          height="600"
           onPointerDown={handleMouseDown}
           onPointerMove={handleMouseMove}
           onPointerUp={handleMouseUp}

@@ -42,7 +42,7 @@ const Form = (props) => {
                     </div>
                 }
                 <button type='submit' className="btn-cyan font-inter font-bold text-gray1">Criar</button>
-                {message.length !== 0 && <p className='text-danger text-center lead'>{message}</p>}
+                {message.length !== 0 && <p className='text-danger text-center lead error-message'>{message}</p>}
             </form>
         </div>
     )

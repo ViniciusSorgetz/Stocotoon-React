@@ -9,13 +9,9 @@ import Home from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
 import Dashboard from "./routes/Dashboard";
-import CreateTeam from "./routes/Team/CreateTeam.jsx";
 import Team from "./routes/Team";
-import CreateStory from "./routes/Story/CreateStory";
 import Story from "./routes/Story";
-import CreateChapter from "./routes/CreateChapter.jsx";
 import Chapter from "./routes/Chapter";
-import CreatePage from "./routes/CreatePage.jsx";
 import DrawingApp from "./routes/DrawingApp";
 import Chat from "./routes/Chat";
 
@@ -40,32 +36,16 @@ const router = createBrowserRouter([
         element: <Dashboard />,
       },
       {
-        path: "/dashboard/criar/:UserId",
-        element: <CreateTeam />,
-      },
-      {
         path: "/team/:TeamId",
         element: <Team />,
-      },
-      {
-        path: "/team/criar/:TeamId",
-        element: <CreateStory />,
       },
       {
         path: "/story/:StoryId",
         element: <Story />,
       },
       {
-        path: "/chapter/criar/:ChapterId",
-        element: <CreateChapter />,
-      },
-      {
         path: "/chapter/:ChapterId",
         element: <Chapter />,
-      },
-      {
-        path: "/page/criar/:PageId",
-        element: <CreatePage />,
       },
       {
         path: "/drawingApp/:PictureId",
