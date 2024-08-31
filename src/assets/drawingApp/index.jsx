@@ -13,6 +13,7 @@ import Text from './Text.svg';
 import Cursor from './Cursor.svg';
 import Save from './Save.svg';
 import ComeBack from './ComeBack.svg';
+import Scissors from './Scissors.svg'
 
 const icons = {
     Arrow,
@@ -29,7 +30,8 @@ const icons = {
     Text,
     Cursor,
     Save,
-    ComeBack
+    ComeBack,
+    Scissors,
 }
 
 export default icons;

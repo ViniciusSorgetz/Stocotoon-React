@@ -119,6 +119,22 @@ function DrawingApp() {
     
   }, [layers]);
 
+  useEffect(() => {
+    document.addEventListener("keydown", keyDownEvent);
+  }, []);
+
+  const keyDownEvent = event => {
+    if(event.key === "Delete"){
+      console.log("Deletando");
+      const elementsCopy = [...selectLayer.elements];
+      const newElements = elementsCopy.filter(element => 
+        selectedElements.findIndex(({id}) => id === element.id) === -1
+      );
+      setSelectedLayer( selectedLayer => ({...selectedLayer, elements: newElements}));  
+      setSelectedElements([]);
+    }
+  }
+
   const handleMouseDown = (event) => {
 
     if(selectedLayer.hidden) return;
@@ -126,10 +142,11 @@ function DrawingApp() {
 
     const { mouseX, mouseY } = getCanvasCoordinates(event);
 
-    if(tool === "selection"){
+    if(tool === "selection" || tool === "scissors"){
       const element = getElementAtPosition(mouseX, mouseY, selectedLayer.elements);
   
       if(element){
+        console.log(element);
         const index = selectedLayer.elements.findIndex(({id}) => id === element.id);
 
         const elementsCopy = selectedLayer.elements.filter((_, i) => i !== index);
@@ -214,7 +231,6 @@ function DrawingApp() {
   }
 
   const handleMouseMove = (event) => {
-
     if(selectedLayer.hidden){
       document.getElementById("canvas").style.cursor = "not-allowed"
       return;
@@ -233,6 +249,12 @@ function DrawingApp() {
       const element = getElementAtPosition(mouseX, mouseY, [selectedArea]);
       if(element)
         document.getElementById("canvas").style.cursor = "move";
+    }
+    if(tool === "scissors"){
+      const element = getElementAtPosition(mouseX, mouseY, selectedLayer.elements);
+      if(element)
+        document.getElementById("canvas").style.cursor = "pointer";
+      return;
     }
 
     if(action === "drawing"){
@@ -292,16 +314,33 @@ function DrawingApp() {
     updateHistory(newHistory);
 
     if(action === "writing") return;
+    if(action === "moving" && tool === "selection"){
+      setAction("none");
+      return;
+    }
 
-    if(selectedElements.length === 1){
-      if(selectedElements[0].type === "text" &&
-        mouseX - selectedElements[0].offsetX === selectedElements[0].x1 &&
-        mouseY - selectedElements[0].offsetY === selectedElements[0].y1
+    if(selectedElements.length === 1 && (tool === "selection" || tool === "scissors")){
+      if(
+        (mouseX - selectedElements[0].offsetX === selectedElements[0].x1 &&
+        mouseY - selectedElements[0].offsetY === selectedElements[0].y1) ||
+        (mouseX - selectedElements[0].xOffsets[0] === selectedElements[0].points[0].x &&
+          mouseY - selectedElements[0].yOffsets[0] === selectedElements[0].points[0].y)
       ){
-        setTextConfigs({...selectedLayer.elements[0].configs});
-        setAction("writing");
-        setTextModal(true);
-        return;
+        if(tool === "selection" && selectedElements[0].type === "text"){
+          console.log("EDITANDO...");
+          setTextConfigs({...selectedLayer.elements[0].configs});
+          setAction("writing");
+          setTextModal(true);
+          return;
+        }
+        else if(tool === "scissors"){
+          console.log("CORTANDO...");
+          const elementsCopy = [...selectedLayer.elements];
+          const newElements = elementsCopy.filter(element => element.id !== selectedElements[0].id);
+          setSelectedLayer( selectedLayer => ({...selectedLayer, elements: newElements}));  
+          console.log(newElements);
+          return;
+        }
       }
     }
 
@@ -335,7 +374,6 @@ function DrawingApp() {
       setSelectedArea({});
       setSelectedElements([]);
     }
-    console.log(layersQty);
     setAction("none");
   }
 
@@ -430,6 +468,14 @@ function DrawingApp() {
           onClick={() => setTool("select")}
         >
           <img src={icons.Select} alt="Select"/>
+        </button>
+        <button 
+            className={tool === "scissors"
+              ? "draw-button tool selectedTool" 
+              : "draw-button tool"} 
+            onClick={() => setTool("scissors")}
+        >
+          <img src={icons.Scissors} alt="Select"/>
         </button>
         <label htmlFor="stroke">Color</label>
         <input 
@@ -526,7 +572,7 @@ function DrawingApp() {
         <canvas
           id="canvas"
           width="1020"
-          height="710"
+          height="580"
           onPointerDown={handleMouseDown}
           onPointerMove={handleMouseMove}
           onPointerUp={handleMouseUp}
