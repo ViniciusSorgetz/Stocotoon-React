@@ -57,7 +57,7 @@ function Login() {
         </div>
         <div className="form-item">
           <label for="password"className="text-light">Senha</label>
-          <input type="text" className="bg-gray1 text-light" name="password" placeholder="Digite sua senha" onChange={(e) => setPassword(e.target.value)}/>
+          <input type="password" className="bg-gray1 text-light" name="password" placeholder="Digite sua senha" onChange={(e) => setPassword(e.target.value)}/>
         </div>
         <button type="submit" className="btn-cyan font-inter font-bold text-gray1">Entrar</button>
       </form>

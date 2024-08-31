@@ -1,4 +1,5 @@
 import { useLayoutEffect, useEffect, useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { DrawingContext } from '../../contexts/DrawingContext';
 import stocotoonAPI from '../../axios/config';
 import { UserContext } from '../../contexts/User';
@@ -14,6 +15,8 @@ import DrawingHistory from './DrawingHistory';
 import TextModal from '../../components/TextModal';
 
 function DrawingApp() {
+
+  const navigate = useNavigate();
 
   const {
     layers, setLayers,
@@ -365,9 +368,15 @@ function DrawingApp() {
   }
   
   return (
-    <div className="drawing-app mt-nav">
+    <div className="drawing-app">
       {textModal && <TextModal/>}
-      <div className="tools-container mt-nav">
+      <div className="tools-container">
+        <button
+          className="draw-button tool"
+          onClick={() => navigate(-1)}
+        >
+          <img src={icons.ComeBack}></img>
+        </button>
         <button
           className="draw-button tool"
           onClick={saveProject}
@@ -516,8 +525,8 @@ function DrawingApp() {
         </div>
         <canvas
           id="canvas"
-          width="800"
-          height="600"
+          width="1020"
+          height="710"
           onPointerDown={handleMouseDown}
           onPointerMove={handleMouseMove}
           onPointerUp={handleMouseUp}

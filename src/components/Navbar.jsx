@@ -1,15 +1,17 @@
 import { UserContext } from "../contexts/User";
 
 import React, { useState, useContext } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, useLocation } from "react-router-dom";
 
 import MenuIcon from "../assets/MenuIcon.svg";
 
 const Navbar = () => {
+
+  const basePath = useLocation().pathname.split('/').slice(0, 2).join('/');
+  if (basePath === "/drawingApp") return null;
+
   const navigate = useNavigate();
-
   const { session, setSession } = useContext(UserContext);
-
   const [teams, setTeams] = useState(null);
 
   const sair = (e) => {
@@ -23,7 +25,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="navbar navbar-expand-md fixed-top bg-gray1 border-bottom border-secondary font-inter"
+      className="navbar navbar-expand-lg fixed-top bg-gray1 border-bottom border-secondary font-inter"
       id="stocotoon-navbar"
     >
       <div className="container ">

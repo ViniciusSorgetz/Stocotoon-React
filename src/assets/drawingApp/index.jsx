@@ -12,6 +12,7 @@ import Redo from './Redo.svg';
 import Text from './Text.svg';
 import Cursor from './Cursor.svg';
 import Save from './Save.svg';
+import ComeBack from './ComeBack.svg';
 
 const icons = {
     Arrow,
@@ -27,7 +28,8 @@ const icons = {
     Redo,
     Text,
     Cursor,
-    Save
+    Save,
+    ComeBack
 }
 
 export default icons;
