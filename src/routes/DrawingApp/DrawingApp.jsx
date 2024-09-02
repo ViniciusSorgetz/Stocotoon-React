@@ -121,17 +121,17 @@ function DrawingApp() {
 
   useEffect(() => {
     document.addEventListener("keydown", keyDownEvent);
-  }, []);
+  }, [selectedLayer]);
 
   const keyDownEvent = event => {
     if(event.key === "Delete"){
-      console.log("Deletando");
-      const elementsCopy = [...selectLayer.elements];
+      const elementsCopy = [...selectedLayer.elements];
       const newElements = elementsCopy.filter(element => 
-        selectedElements.findIndex(({id}) => id === element.id) === -1
+        selectedElements.findIndex(({id}) => id == element.id) == -1
       );
-      setSelectedLayer( selectedLayer => ({...selectedLayer, elements: newElements}));  
+      setSelectedLayer(prevState => ({...prevState, elements: newElements}));  
       setSelectedElements([]);
+      setSelectedArea({});
     }
   }
 
@@ -263,6 +263,9 @@ function DrawingApp() {
       updateElement(id, x1, y1, mouseX, mouseY, tool, configs);
     }
     else if(action === "moving"){
+      console.log('')
+      console.log(selectedLayer);
+      console.log(selectedLayer.elements);
       selectedElements.map(selected => {
         if(selected.type === "pencil"){
           const newPoints = selected.points.map((_, index) => {
@@ -303,7 +306,7 @@ function DrawingApp() {
   }
 
   const handleMouseUp = (event) => {
-    
+
     const { mouseX, mouseY } = getCanvasCoordinates(event);
 
     const newHistory = {
@@ -314,12 +317,11 @@ function DrawingApp() {
     updateHistory(newHistory);
 
     if(action === "writing") return;
-    if(action === "moving" && tool === "selection"){
-      setAction("none");
-      return;
-    }
 
-    if(selectedElements.length === 1 && (tool === "selection" || tool === "scissors")){
+    if(selectedElements.length === 1 
+      && (tool === "selection" || tool === "scissors")
+      && action === "moving"
+    ){
       if(
         (mouseX - selectedElements[0].offsetX === selectedElements[0].x1 &&
         mouseY - selectedElements[0].offsetY === selectedElements[0].y1) ||
@@ -344,7 +346,7 @@ function DrawingApp() {
       }
     }
 
-    if(action === "drawing" || action === "resizing"){
+    else if(action === "drawing" || action === "resizing"){
       const index = 0;
       const {id, type, configs} = selectedLayer.elements[0];
       if(['line', 'rectangle'].includes(type)){
@@ -352,6 +354,7 @@ function DrawingApp() {
         updateElement(id, x1, y1, x2, y2, type, configs);
       }
     }
+
     else if(action === "selecting"){
       const {x1, y1, x2, y2} = adjustElementCoordinates(selectedArea);
       const newSelection = createSelection(x1, y1, x2, y2);
@@ -370,10 +373,12 @@ function DrawingApp() {
         setSelectedArea({});
       }
     }
+
     else if(action === "moving"){
       setSelectedArea({});
       setSelectedElements([]);
     }
+
     setAction("none");
   }
 
