@@ -6,6 +6,8 @@ import stocotoonAPI from "../../axios/config";
 import FormModal from "../../components/FormModal";
 import Item from "../../components/Item";
 import StoryIcon from "../../assets/StoryIcon.svg";
+import TeamPhoto from "../../assets/TeamPhoto.svg";
+import ComeBack from "../../assets/ComeBack.svg"
 import CreateItem from "../../components/CreateItem";
 import ItemContextMenu from "../../components/ItemContextMenu";
 
@@ -134,6 +136,21 @@ function Team() {
         message={message}
         button={createMode ? "Criar" : "Editar"}
       />}
+      <div className="d-flex justify-content-center mb-3">
+        <div className="w-50 d-flex justify-content-center align-items-start">
+          <img src={TeamPhoto}/>
+            <Link to={`/team/${teamId}/info`}>
+              <img 
+                src={ComeBack}
+                style={{
+                  padding: "none",
+                  transform: "scaleX(-1)",
+                  cursor: "pointer"
+                }}  
+              />
+            </Link>
+        </div>
+      </div>
       <h1 className="text-light text-center pb-5 font-grand font-bold">
         {teamName}
       </h1>

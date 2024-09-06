@@ -10,6 +10,7 @@ import Register from "./routes/Register";
 import Login from "./routes/Login";
 import Dashboard from "./routes/Dashboard";
 import Team from "./routes/Team";
+import TeamInfo from "./routes/TeamInfo";
 import Story from "./routes/Story";
 import Chapter from "./routes/Chapter";
 import DrawingApp from "./routes/DrawingApp";
@@ -17,39 +18,43 @@ import Chat from "./routes/Chat";
 
 const router = createBrowserRouter([
   {
-    element: <App />,
+    element: <App/>,
     children: [
       {
         path: "/",
-        element: <Home />,
+        element: <Home/>,
       },
       {
         path: "/cadastro",
-        element: <Register />,
+        element: <Register/>,
       },
       {
         path: "/entrar",
-        element: <Login />,
+        element: <Login/>,
       },
       {
         path: "/dashboard/:UserId",
-        element: <Dashboard />,
+        element: <Dashboard/>,
       },
       {
         path: "/team/:TeamId",
-        element: <Team />,
+        element: <Team/>,
+      },
+      {
+        path: "/team/:TeamId/info",
+        element: <TeamInfo/>,
       },
       {
         path: "/story/:StoryId",
-        element: <Story />,
+        element: <Story/>,
       },
       {
         path: "/chapter/:ChapterId",
-        element: <Chapter />,
+        element: <Chapter/>,
       },
       {
         path: "/drawingApp/:PictureId",
-        element: <DrawingApp />,
+        element: <DrawingApp/>,
       },
       {
         path: "/chat/",
