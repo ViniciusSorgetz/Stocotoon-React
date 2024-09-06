@@ -1,0 +1,7 @@
+.members-container li{
+    list-style: none;
+    margin: 0;
+}
+.members-container ul{
+    padding: 0;
+}
