@@ -5,3 +5,13 @@
 .members-container ul{
     padding: 0;
 }
+#members-dropdown{
+    background-color: #181818;
+    border: 1px solid #6C757D;
+}
+#members-dropdown li{
+    border-radius: 10px;
+}
+#members-dropdown li:hover{
+    cursor: pointer;
+}
