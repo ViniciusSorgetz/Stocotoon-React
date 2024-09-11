@@ -223,7 +223,7 @@ const TeamInfo = () => {
                             </img>
                             <ul className="dropdown-menu dropdown-menu-dark dropdown-menu-end py-1 mt-2" id="members-dropdown">
                                 <li 
-                                    className="dropdown-item d-flex gap-2"
+                                    className="dropdown-item d-flex justify-content-between gap-2"
                                     onClick={() => {
                                         setAddMemberInput(true);
                                         setRemoveMemberInput(false);
@@ -234,7 +234,7 @@ const TeamInfo = () => {
                                     <i class="bi bi-plus-circle-dotted"></i>
                                 </li>
                                 <li 
-                                    className="dropdown-item d-flex gap-2"
+                                    className="dropdown-item d-flex justify-content-between gap-2"
                                     onClick={() => {
                                         setRemoveMemberInput(true);
                                         setAddMemberInput(false);
@@ -288,7 +288,10 @@ const TeamInfo = () => {
                     <ul>
                         {teamInfo.members.owners.map(owner => (
                             <li className="d-flex gap-2">
-                                <img src={MemberPhoto}/>
+                                <img 
+                                    src={owner.profilePictureURL || MemberPhoto}
+                                    className="userPicture"
+                                />
                                 <div className="d-flex flex-column">
                                     <span className="text-light font-bold">{owner.name}</span>
                                     <span className="text-light">{owner.email}</span>
@@ -301,7 +304,10 @@ const TeamInfo = () => {
                             <ul className="d-flex flex-column gap-3">
                             {teamInfo.members.members.map(member => (
                                 <li className="d-flex gap-2">
-                                    <img src={MemberPhoto}/>
+                                    <img 
+                                        src={member.profilePictureURL || MemberPhoto}
+                                        className="userPicture"
+                                    />
                                     <div className="d-flex flex-column">
                                         <span className="text-light font-bold">{member.name}</span>
                                         <span className="text-light">{member.email}</span>
