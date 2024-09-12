@@ -1,0 +1,30 @@
+.user-profile-picture{
+    object-fit: cover;
+    width: 170px;
+    height: 170px;
+    border-radius: 100%;
+}
+.profile-card{
+    background-color: #1E1E1E;
+    border: 1px solid #6C757D;
+    border-radius: 30px;
+    width: 85%;
+    max-width: 600px;
+}
+.profile-card-header{
+    border-bottom: 1px solid #6C757D;
+}
+.profile-card-footer{
+    border-top: 1px solid #6C757D;
+}
+.btn-gray{
+    height:32px;
+    text-decoration: none;
+    background-color: #121212;
+    color: #6C757D;
+    border-radius: 5px;
+    border: 1px solid #6C757D;
+    padding:3px 12px;
+    transition: 0.3s;
+    cursor: pointer;
+}

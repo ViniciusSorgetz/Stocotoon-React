@@ -8,6 +8,7 @@ import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
 import Home from "./routes/Home";
 import Register from "./routes/Register";
 import Login from "./routes/Login";
+import UserProfile from './routes/UserProfile';
 import Dashboard from "./routes/Dashboard";
 import Team from "./routes/Team";
 import TeamInfo from "./routes/TeamInfo";
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: "/entrar",
         element: <Login/>,
+      },
+      {
+        path: "/seu-perfil",
+        element: <UserProfile/>
       },
       {
         path: "/dashboard/:UserId",

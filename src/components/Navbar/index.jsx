@@ -1,9 +1,11 @@
-import { UserContext } from "../contexts/User";
+import { UserContext } from "../../contexts/User";
 
 import React, { useState, useContext } from "react";
 import { useNavigate, Link, useLocation } from "react-router-dom";
 
-import MenuIcon from "../assets/MenuIcon.svg";
+import MenuIcon from "../../assets/MenuIcon.svg";
+import DefaultProfilePicture from "../../assets/DefaultProfilePicture.png";
+import './Navbar.css';
 
 const Navbar = () => {
 
@@ -97,14 +99,21 @@ const Navbar = () => {
             ) : (
               <>
                 <Link
-                  to={"/"}
+                  to={"/seu-perfil"}
                   className="btn-outline-cyan"
                   onClick={(e) => sair(e)("AAA")}
                 >
                   Sair
                 </Link>
-                <Link to={"/"} className="nav-link text-light">
+                <Link to={"/seu-perfil"} className="nav-link text-light d-flex align-items-center gap-3">
                   {session.Username}
+                  {session.UserProfilePictureURL &&
+                    <img 
+                      src={session.UserProfilePictureURL} 
+                      className="profilePicture"
+                      alt="Profile Picture" 
+                    />
+                  }
                 </Link>
               </>
             )}

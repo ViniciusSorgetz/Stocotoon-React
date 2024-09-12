@@ -35,6 +35,7 @@ function Login() {
         Username: response.data.name,
         UserId: response.data.id,
         UserToken: response.data.token,
+        UserProfilePictureURL: response.data.profilePictureURL
       };
       console.log(data);
       localStorage.setItem("session", JSON.stringify(data));
