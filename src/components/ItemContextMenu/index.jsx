@@ -7,13 +7,15 @@ const ItemContextMenu = (props) => {
     const {
         name, type, 
         setContextMenu, 
-        handleClick, 
-        positionX, positionY
+        handleClick, handleDelete, 
+        positionX, positionY,
+        updateId
     } = props;
     
     const contextMenuRef = useRef();
 
     useEffect(() => {
+        updateId();
         function handler(e){
             if(contextMenuRef.current){
                 if(!contextMenuRef.current.contains(e.target)){
@@ -70,6 +72,10 @@ const ItemContextMenu = (props) => {
                 <div 
                     className="w-100 d-flex align-items-center justify-content-between text-danger p-1"
                     style={{cursor: "pointer"}}
+                    onClick={() => {
+                        handleDelete();
+                        setContextMenu(false);
+                    }}
                 >
                     Excluir
                     <i className="bi bi-trash"></i>

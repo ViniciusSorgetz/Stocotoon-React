@@ -16,6 +16,7 @@ function Team() {
   const [storyName, setStoryName] = useState("");
   const [currentChapter, setCurrentChapter] = useState({});
   const [storyId, setStoryId] = useState(null);
+  const [chapterId, setChapterId] = useState(null);
   const [modal, setModal] = useState(false);
 
   const [name, setName] = useState("");
@@ -77,7 +78,39 @@ function Team() {
   } 
 
   const editChapter = async () => {
-    console.log("editando...")
+    const chapter = {name}
+    try {
+        const resp = await stocotoonAPI.put(`/chapter/${chapterId}`, chapter, {
+            headers: {
+                Authorization: `Bearer ${session.UserToken}`
+            }
+        });
+        const index = chapters.findIndex(chapter => chapter.id === chapterId);
+        const updatedChapters = [...chapters];
+        updatedChapters[index] = resp.data.chapter;
+        setChapters(updatedChapters);
+        closeModal();
+    }
+    catch (error) {
+        setMessage(error.response.data.message);
+    }
+  }
+
+  const deleteChapter = async () => {
+
+    try {
+      await stocotoonAPI.delete(`/chapter/${chapterId}`, {
+        headers: {
+            Authorization: `Bearer ${session.UserToken}`
+        }
+      });
+      const updatedChapters = chapters.filter(chapter => chapter.id != chapterId);
+      setChapters(updatedChapters);
+      closeModal();
+    } 
+    catch (error) {
+      setMessage(error.response.data.message);
+    }
   }
 
   return (
@@ -89,12 +122,14 @@ function Team() {
           positionY={positionY}
           name={"chapter"}
           type={currentChapter}
+          updateId={() => setChapterId(currentChapter.id)}
           handleClick={() => {
             setName(currentChapter.name)
             setDescription(currentChapter.description)
-            setStoryId(currentChapter.id)
+            setChapterId(currentChapter.id)
             setCreateMode(false)
             setModal(true)}}
+          handleDelete={deleteChapter}
         />
       }
       {modal && <FormModal 

@@ -82,7 +82,7 @@ function Team() {
   } 
 
   const editStory = async () => {
-    console.log("editando...")
+
     const story = {
       name,
       description,
@@ -105,6 +105,23 @@ function Team() {
     }
   }
 
+  const deleteStory = async () => {
+
+    try {
+      await stocotoonAPI.delete(`/story/${storyId}`, {
+        headers: {
+            Authorization: `Bearer ${session.UserToken}`
+        }
+      });
+      const updatedStories = stories.filter(story => story.id != storyId);
+      setStories(updatedStories);
+      closeModal();
+    } 
+    catch (error) {
+      setMessage(error.response.data.message);
+    }
+  }
+
   return (
     <div className="container pb-5 mt-nav">
       {contextMenu && 
@@ -114,12 +131,14 @@ function Team() {
           positionY={positionY}
           name={"team"}
           type={currentStory}
+          updateId={() => setStoryId(currentStory.id)}
           handleClick={() => {
             setName(currentStory.name)
             setDescription(currentStory.description)
             setStoryId(currentStory.id)
             setCreateMode(false)
             setModal(true)}}
+          handleDelete={deleteStory}
         />
       }
       {modal && <FormModal 

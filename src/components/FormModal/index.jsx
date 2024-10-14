@@ -21,6 +21,7 @@ const FormModal = (props) => {
         button,
     } = props;
 
+
     return(
         <>
             <div className="modal fade show" id="form-modal" style={{display: "block"}}>

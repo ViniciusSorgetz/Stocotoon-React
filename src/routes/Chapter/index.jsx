@@ -15,6 +15,7 @@ function Team() {
   const [pages, setPages] = useState([]);
   const [chapterName, setChapterName] = useState("");
   const [currentPage, setCurrentPage] = useState({});
+  const [pageId,  setPageId] = useState(null);
   const [chapterId, setChapterId] = useState(null);
   const [modal, setModal] = useState(false);
 
@@ -75,8 +76,43 @@ function Team() {
     }
   } 
 
-  const eidtPage = async () => {
-    console.log("editando...")
+  const editPage = async () => {
+
+    const page = {name}
+    
+    try {
+        const resp = await stocotoonAPI.put(`/page/${pageId}`, page, {
+            headers: {
+                Authorization: `Bearer ${session.UserToken}`
+            }
+        });
+        const index = pages.findIndex(page => page.id === pageId);
+        const updatedChapters = [...pages];
+        updatedChapters[index] = resp.data.page;
+        setPages(updatedChapters);
+        closeModal();
+    }
+    catch (error) {
+        console.log(error);
+        setMessage(error.response.data.message);
+    }
+  }
+
+  const deletePage = async () => {
+
+    try {
+      await stocotoonAPI.delete(`/page/${pageId}`, {
+        headers: {
+            Authorization: `Bearer ${session.UserToken}`
+        }
+      });
+      const updatedPages = pages.filter(page => page.id != pageId);
+      setPages(updatedPages);
+      closeModal();
+    } 
+    catch (error) {
+      setMessage(error.response.data.message);
+    }
   }
 
   return (
@@ -88,19 +124,21 @@ function Team() {
           positionY={positionY}
           name={"drawingApp"}
           type={currentPage}
+          updateId={() => setPageId(currentPage.id)}
           handleClick={() => {
             setName(currentPage.name)
             setDescription(currentPage.description)
-            setStoryId(currentPage.id)
+            setPageId(currentPage.id)
             setCreateMode(false)
             setModal(true)}}
+          handleDelete={deletePage}
         />
       }
       {modal && <FormModal 
         hide={closeModal}
         setName={setName} name={name}
         setDescription={setDescription} description={description}
-        handleSubmit={createMode ? createPage : eidtPage}
+        handleSubmit={createMode ? createPage : editPage}
         title="Criar Página"
         nameLabel="Nome da página"
         descriptionLabel="Descrição da página"
