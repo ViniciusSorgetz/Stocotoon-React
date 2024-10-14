@@ -2,6 +2,7 @@ import Arrow from './Arrow.svg';
 import Layer from './Layer.svg';
 import Line from './Line.svg';
 import Square from './Square.svg';
+import Circle from './Circle.svg';
 import Selection from './Selection.svg';
 import Trash from './Trash.svg';
 import View from './View.svg';
@@ -32,6 +33,7 @@ const icons = {
     Save,
     ComeBack,
     Scissors,
+    Circle,
 }
 
 export default icons;

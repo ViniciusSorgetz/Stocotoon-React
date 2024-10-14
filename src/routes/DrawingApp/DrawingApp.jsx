@@ -146,7 +146,6 @@ function DrawingApp() {
       const element = getElementAtPosition(mouseX, mouseY, selectedLayer.elements);
   
       if(element){
-        console.log(element);
         const index = selectedLayer.elements.findIndex(({id}) => id === element.id);
 
         const elementsCopy = selectedLayer.elements.filter((_, i) => i !== index);
@@ -203,7 +202,7 @@ function DrawingApp() {
         }
       }  
     }
-    else if(["pencil", "rectangle", "line", "text"].includes(tool)){
+    else if(["pencil", "rectangle", "ellipse", "line", "text"].includes(tool)){
       const id = selectedLayer.elements.length;
       let configs;
       if(tool === "pencil"){
@@ -263,9 +262,6 @@ function DrawingApp() {
       updateElement(id, x1, y1, mouseX, mouseY, tool, configs);
     }
     else if(action === "moving"){
-      console.log('')
-      console.log(selectedLayer);
-      console.log(selectedLayer.elements);
       selectedElements.map(selected => {
         if(selected.type === "pencil"){
           const newPoints = selected.points.map((_, index) => {
@@ -322,34 +318,36 @@ function DrawingApp() {
       && (tool === "selection" || tool === "scissors")
       && action === "moving"
     ){
-      if(
-        (mouseX - selectedElements[0].offsetX === selectedElements[0].x1 &&
-        mouseY - selectedElements[0].offsetY === selectedElements[0].y1) ||
-        (mouseX - selectedElements[0].xOffsets[0] === selectedElements[0].points[0].x &&
+      console.log(-1);
+      if (
+        ((selectedElements[0].offsetX !== undefined && selectedElements[0].offsetY !== undefined) &&
+          mouseX - selectedElements[0].offsetX === selectedElements[0].x1 &&
+          mouseY - selectedElements[0].offsetY === selectedElements[0].y1) ||
+        ((selectedElements[0].xOffsets && selectedElements[0].yOffsets && selectedElements[0].points) &&
+          mouseX - selectedElements[0].xOffsets[0] === selectedElements[0].points[0].x &&
           mouseY - selectedElements[0].yOffsets[0] === selectedElements[0].points[0].y)
       ){
+        console.log(1);
         if(tool === "selection" && selectedElements[0].type === "text"){
-          console.log("EDITANDO...");
           setTextConfigs({...selectedLayer.elements[0].configs});
           setAction("writing");
           setTextModal(true);
           return;
         }
         else if(tool === "scissors"){
-          console.log("CORTANDO...");
           const elementsCopy = [...selectedLayer.elements];
           const newElements = elementsCopy.filter(element => element.id !== selectedElements[0].id);
           setSelectedLayer( selectedLayer => ({...selectedLayer, elements: newElements}));  
-          console.log(newElements);
           return;
         }
+        console.log(2);
       }
     }
 
     else if(action === "drawing" || action === "resizing"){
       const index = 0;
       const {id, type, configs} = selectedLayer.elements[0];
-      if(['line', 'rectangle'].includes(type)){
+      if(['line', 'rectangle', "ellipse"].includes(type)){
         const {x1, y1, x2, y2,} = adjustElementCoordinates(selectedLayer.elements[index]);
         updateElement(id, x1, y1, x2, y2, type, configs);
       }
@@ -433,6 +431,14 @@ function DrawingApp() {
           onClick={() => setTool("rectangle")}
         >
           <img src={icons.Square} alt="Square"/>
+        </button>
+        <button 
+          className={tool === "ellipse"
+            ? "draw-button tool selectedTool" 
+            : "draw-button tool"} 
+          onClick={() => setTool("ellipse")}
+        >
+          <img src={icons.Circle} alt="Circle"/>
         </button>
         <button 
           className={tool === "line"
@@ -547,9 +553,8 @@ function DrawingApp() {
                     onClick={() => hideLayer(index)}
                   >
                     <img 
-                      className={layer.hidden && "hidden"} 
+                      className={layer.hidden ? "viewIcon hidden" : "viewIcon"} 
                       src={icons.View}
-                      style={{width: "7px"}}
                       />
                   </button>
                 </div>

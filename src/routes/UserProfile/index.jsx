@@ -74,7 +74,7 @@ const UserProfile  = () => {
                 id="profile-picture-input" 
                 style={{display: "none"}}
                 accept="image/png, image/jpg"
-                onChange={(e) => console.log(e.target.value)}
+                onChange={(e) => console.log(e.target.files[0])}
               />
             </div>
             <div className="form-item p-0 w-100">

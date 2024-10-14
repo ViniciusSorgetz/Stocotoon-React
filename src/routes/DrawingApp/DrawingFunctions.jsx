@@ -25,6 +25,9 @@ const DrawingFunctions = () => {
       case "rectangle":
         roughElement = generator.rectangle(x1, y1, x2-x1, y2-y1, {...configs}); 
         return { id, x1, y1, x2, y2, type: tool, roughElement, configs};
+      case "ellipse":
+        roughElement = generator.ellipse(((x1+x2)/2), ((y1+y2)/2), x2-x1, y2-y1, {...configs}); 
+        return { id, x1, y1, x2, y2, type: tool, roughElement, configs};
       case "pencil":
         return {id, type: tool, points: [{x: x1, y: y1}], configs};
       case "text":
@@ -45,6 +48,7 @@ const DrawingFunctions = () => {
     switch(tool){
       case "line":
       case "rectangle":
+      case "ellipse":
         newElements[index] = createElement(id, x1, y1, x2, y2, tool, configs);
         break;
       case "pencil":
@@ -73,6 +77,7 @@ const DrawingFunctions = () => {
     switch(element.type){
       case "line":
       case "rectangle":
+      case "ellipse":
         roughCanvas.draw(element.roughElement);
         break;
       case "pencil":
@@ -121,6 +126,7 @@ const DrawingFunctions = () => {
         const end = nearPoint(x, y, x2, y, "end");
         return start || end || on;
       case "rectangle":
+      case "ellipse":
         const topLeft = nearPoint(x, y, x1, y1, "tl");
         const topRight = nearPoint(x, y, x2, y1, "tr");
         const bottomLeft = nearPoint(x, y, x1, y2, "bl");
@@ -151,7 +157,7 @@ const DrawingFunctions = () => {
     
   const adjustElementCoordinates = element => {
       const {type, x1, y1, x2, y2} = element;
-      if(type === "rectangle"){
+      if(type === "rectangle" || type === "ellipse"){
         const minX = Math.min(x1, x2);
         const maxX = Math.max(x1, x2);
         const minY = Math.min(y1, y2);
@@ -222,6 +228,7 @@ const DrawingFunctions = () => {
     return elements.filter(element => {
       switch(element.type){
         case "rectangle":
+        case "ellipse":
         case "text":
           if(
             ((element.x1 >= x1 && element.x1 <= x2 && element.y1 >= y1 && element.y1 <= y2) ||
