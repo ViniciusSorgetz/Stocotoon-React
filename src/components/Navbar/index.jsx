@@ -107,13 +107,6 @@ const Navbar = () => {
                 </Link>
                 <Link to={"/seu-perfil"} className="nav-link text-light d-flex align-items-center gap-3">
                   {session.Username}
-                  {session.UserProfilePictureURL &&
-                    <img 
-                      src={session.UserProfilePictureURL} 
-                      className="profilePicture"
-                      alt="Profile Picture" 
-                    />
-                  }
                 </Link>
               </>
             )}

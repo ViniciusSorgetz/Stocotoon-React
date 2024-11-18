@@ -45,6 +45,19 @@ const UserProfile  = () => {
       }
   }
 
+  const handleCancel = async () => {
+    setEditMode(false);
+    setErrorMessage("");
+  }
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `Conta criada em: ${day}/${month}/${year}`;
+  }
+
   return (
     <div className="mt-nav container d-flex justify-content-center">
       <div className="card profile-card">
@@ -63,12 +76,6 @@ const UserProfile  = () => {
           {editMode ? 
           <form className="my-form d-flex flex-column align-items-center" onSubmit={editUser}>
             <div className="pb-3 d-flex">
-              <img 
-                src={session.UserProfilePictureURL} 
-                className="user-profile-picture"
-                alt="Profile Picture" 
-              />
-              <label className="btn-gray" htmlFor="profile-picture-input">Alterar</label>
               <input 
                 type="file" 
                 id="profile-picture-input" 
@@ -90,16 +97,11 @@ const UserProfile  = () => {
             </span>
             <div className="d-flex w-100 gap-2 mt-4">
               <button className="btn-outline-cyan" type="submit">Salvar</button>
-              <button className="btn-gray" type="button" onClick={() => setEditMode(false)}>Cancelar</button>
+              <button className="btn-gray" type="button" onClick={handleCancel}>Cancelar</button>
             </div>
             {errorMessage.length !== 0 && <p className='text-danger text-left w-100 mt-3 error-message'>{errorMessage}</p>}
           </form> : 
           <>
-            <img 
-              src={session.UserProfilePictureURL} 
-              className="user-profile-picture"
-              alt="Profile Picture" 
-            />
             <h1 className="text-cyan font-bold font-grand align-left w-100 h3 mt-4 mb-0">{session.Username}</h1>
             <span className="text-gray2 align-left w-100">
               {userData.email}
@@ -109,7 +111,7 @@ const UserProfile  = () => {
         </div>
         <div className="card-footer profile-card-footer p-3 px-4">
           <span className="text-gray2 ont-grand align-left w-100 mt-4">
-            {userData.createdAt}
+            {formatDate(userData.createdAt)}
           </span>
         </div>
       </div>
