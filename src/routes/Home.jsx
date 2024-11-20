@@ -3,6 +3,18 @@ import squares from "../assets/Squares.svg";
 import rectangle1 from "../assets/Rectangle1.svg";
 import rectangle2 from "../assets/Rectangle2.svg";
 import rectangle3 from "../assets/Rectangle3.svg";
+import HomeImage01 from '../assets/HomeImage01.png';
+import Function01 from '../assets/Function01.svg';
+import Function02 from '../assets/Function02.svg';
+import Function03 from '../assets/Function03.svg';
+import Function04 from '../assets/Function04.svg';
+import Tour01 from '../assets/Tour01.png';
+import Tour02 from '../assets/Tour02.png';
+import Tour03 from '../assets/Tour03.png';
+import Card01 from '../assets/Card01.png';
+import Card02 from '../assets/Card02.png';
+import Card03 from '../assets/Card03.png';
+import { Link } from "react-router-dom";
 
 function Home() {
   return (
@@ -21,20 +33,14 @@ function Home() {
                 de <span className="text-cyan">HQs</span>
               </h1>
               <p className="text-light font-inter">
-                Lorem, ipsum dolor sit{" "}
-                <a href="#tuor" className="text-cyan font-bold">
-                  tuor
-                </a>{" "}
-                consectetur adipisicing elit. Fuga nostrum accusamus ipsum illo
-                odit maxime vel provident animi eligendi sapiente. Lorem ipsum
-                dolor sit amet consectetur adipisicing elit.
+                Olá, este é o Stocotoon! Convidamos você a conferir todas as funcionalidades presentes em nosso site focado para o desenvolvimento de Storyboards de Histórias em Quadrinhos!
               </p>
               <button className="btn-cyan font-inter font-bold text-gray1">
-                Começar
+                <Link to={"/cadastro"} style={{ textDecoration: 'none', color: 'inherit' }}>Começar</Link>
               </button>
             </div>
             <div className="col-md-6 my-lg-0 mt-5 d-flex justify-content-center">
-              <img src={squares} alt="squares" className="img-fluid" />
+              <img src={HomeImage01} alt="squares" style={{width: "400px", height: "300px"}}/>
             </div>
           </div>
         </div>
@@ -52,12 +58,11 @@ function Home() {
               <div className="card py-2 tool-card">
                 <div className="card-body">
                   <h4 className="card-title font-grand font-bold text-gray1 text-center">
-                    Organize seus Storyboards
+                    Organize seus Projetos
                   </h4>
-                  <img src={rectangle1} className="w-100 my-2" alt="square" />
+                  <img src={Function01} className="w-100 my-2" alt="square" />
                   <p className="car-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                    reiciendis.
+                    Aqui é possível organizar seus projetos em histórias, capítulos e páginas!
                   </p>
                 </div>
               </div>
@@ -66,12 +71,11 @@ function Home() {
               <div className="card py-2 tool-card">
                 <div className="card-body">
                   <h4 className="card-title font-grand font-bold text-gray1 text-center">
-                    Organize seus Storyboards
+                    Desenhe seus Storyboards
                   </h4>
-                  <img src={rectangle1} className="w-100 my-2" alt="square" />
+                  <img src={Function02} className="w-100 my-2" alt="square" />
                   <p className="car-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                    reiciendis.
+                    Você pode desenhar seu Storyboard em nossa ferramenta para desenhos!
                   </p>
                 </div>
               </div>
@@ -80,12 +84,11 @@ function Home() {
               <div className="card py-2 tool-card">
                 <div className="card-body">
                   <h4 className="card-title font-grand font-bold text-gray1 text-center">
-                    Organize seus Storyboards
+                    Escreva seus Roteiros
                   </h4>
-                  <img src={rectangle1} className="w-100 my-2" alt="square" />
+                  <img src={Function03} className="w-100 my-2" alt="square" />
                   <p className="car-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                    reiciendis.
+                    Seja capaz de escrever seu roteiro junto de seu storyboard com nossa ferramenta de texto!
                   </p>
                 </div>
               </div>
@@ -94,12 +97,12 @@ function Home() {
               <div className="card py-2 tool-card">
                 <div className="card-body">
                   <h4 className="card-title font-grand font-bold text-gray1 text-center">
-                    Organize seus Storyboards
+                    Converse com a
+                    Equipe
                   </h4>
-                  <img src={rectangle1} className="w-100 my-2" alt="square" />
+                  <img src={Function04} className="w-100 my-2" alt="square" />
                   <p className="car-text">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Et,
-                    reiciendis.
+                    Após entrar em uma equipe, participe do chat e discuta sobre o seu projeto!
                   </p>
                 </div>
               </div>
@@ -118,75 +121,63 @@ function Home() {
           <div className="row d-flex my-0 my-lg-5 align-items-center">
             <div className="col-md-6 col-lg-7">
               <img
-                src={rectangle2}
+                src={Tour01}
                 className="img-fluid tuor-img"
                 alt="Rectangle"
               />
             </div>
             <div className="col-lg-5 col-md-6 text-light font-inter my-md-0 my-4">
               <h3 className="h2 font-grand font-bold text-cyan">
-                Lorem ipsum dolor sit amet. Est dolorum offi.
+                Página para Gerenciamento de Equipe
               </h3>
               <br />
               <p>
-                Lorem ipsum dolor sit amet. Est dolorum officia qui numquam
-                eveniet sit autem laboriosam ea sapiente earum hic sequi quam
-                sit veniam deleniti ad modi obcaecati.{" "}
+                Após criar sua equipe, é possível gerenciá-la, adicionando ou removendo membros em seu time. Nesta página também você poderá editar o nome e a descrição de sua equipe.{" "}
               </p>
               <p>
-                Et consequuntur ipsa non perferendis incidunt non perferendis
-                temporibus et quisquam iusto ut asperiores nesciunt et
-                reiciendis inventore.
+                Além disso, é possível visualizar os números dela, vendo quantas histórias, capítulos e páginas você e sua equipe já criaram.
               </p>
             </div>
           </div>
           <div className="row d-flex flex-row-reverse my-5 align-items-center">
             <div className="col-md-6 col-lg-7">
               <img
-                src={rectangle2}
+                src={Tour02}
                 className="img-fluid tuor-img"
                 alt="Rectangle"
               />
             </div>
             <div className="col-md-6 col-lg-5 text-light font-inter my-md-0 my-4">
               <h3 className="h2 font-grand font-bold text-cyan">
-                Lorem ipsum dolor sit amet. Est dolorum offi.
+                Página para desenhar e escrever o roteiro do Storyboard da sua HQ
               </h3>
               <br />
               <p>
-                Lorem ipsum dolor sit amet. Est dolorum officia qui numquam
-                eveniet sit autem laboriosam ea sapiente earum hic sequi quam
-                sit veniam deleniti ad modi obcaecati.{" "}
+                Nesta página você será capaz de desenhar o seu storyboard, contando com diversas ferramentas que te permitem inserir texto, desenhar e redimencionar formas geométricas, um sistema de camadas completo e muito mais.{" "}
               </p>
               <p>
-                Et consequuntur ipsa non perferendis incidunt non perferendis
-                temporibus et quisquam iusto ut asperiores nesciunt et
-                reiciendis inventore.
+                Aproveite também e escreva seu roteiro, com o que precisa ter na cena a ser desenhada, contando com formatações que deixam toda a leitura bem mais fácil.
               </p>
             </div>
           </div>
           <div className="row d-flex my-5 align-items-center">
             <div className="col-md-6 col-lg-7">
               <img
-                src={rectangle2}
+                src={Tour03}
                 className="img-fluid tuor-img"
                 alt="Rectangle"
               />
             </div>
             <div className="col-md-6 col-lg-5 text-light font-inter my-md-0 my-4">
               <h3 className="h2 font-grand font-bold text-cyan">
-                Lorem ipsum dolor sit amet. Est dolorum offi.
+                Página de Bate-Papo para equipes
               </h3>
               <br />
               <p>
-                Lorem ipsum dolor sit amet. Est dolorum officia qui numquam
-                eveniet sit autem laboriosam ea sapiente earum hic sequi quam
-                sit veniam deleniti ad modi obcaecati.{" "}
+                  Quando criar sua equipe, dê uma olhada na aba de chat localizada na barra de navegação do site. Lá, é possível conversar com os membros presentes nas equipes que você participa e, consequentemente, discutir os rumos do projeto.{" "}
               </p>
               <p>
-                Et consequuntur ipsa non perferendis incidunt non perferendis
-                temporibus et quisquam iusto ut asperiores nesciunt et
-                reiciendis inventore.
+                Altere entre as conversas de diferentes equipes facilmente com a barra lateral, que te permite visualizar melhor os chats que você está conversando e navegar mais facilmente entre eles.
               </p>
             </div>
           </div>
@@ -200,32 +191,32 @@ function Home() {
           <div className="row chat-row text-light">
             <div className="chat-card col-md-4 d-flex flex-column justify-content-center px-5 px-md-3">
               <img
-                src={rectangle3}
+                src={Card01}
                 alt="rectangle"
                 className="img-fluid chat-img"
               />
               <h3 className="font-grand font-bold py-3">
-                Lorem ipsum dolor sit amet similique.
+                Aba de Bate-Papo para Equipes
               </h3>
             </div>
             <div className="col-md-4 d-flex flex-column justify-content-center px-5 px-md-3">
               <img
-                src={rectangle3}
+                src={Card02}
                 alt="rectangle"
                 className="img-fluid chat-img"
               />
               <h3 className="font-grand font-bold py-3">
-                Lorem ipsum dolor sit amet similique.
+                Sistema de Organização de Arquivos
               </h3>
             </div>
             <div className="chat-card col-md-4 d-flex flex-column justify-content-center px-5 px-md-3">
               <img
-                src={rectangle3}
+                src={Card03}
                 alt="rectangle"
                 className="img-fluid chat-img"
               />
               <h3 className="font-grand font-bold py-3">
-                Lorem ipsum dolor sit amet similique.
+                Ferramenta de Desenho com Várias Funções
               </h3>
             </div>
           </div>

@@ -122,6 +122,9 @@
 #navbar-logo:hover{
       transform: scale(1.08);
 }
+#navbar-logo{
+      --bs-navbar-brand-hover-color:  #00F0FF;
+}
 .pages-link{
       transition:0.3s;
 }

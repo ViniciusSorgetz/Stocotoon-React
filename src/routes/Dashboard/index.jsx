@@ -107,6 +107,7 @@ function Team() {
           positionY={positionY}
           name={"team"}
           type={currentTeam}
+          updateId={() => setTeamId(currentTeam.id)}
           handleClick={() => {
             setName(currentTeam.name)
             setDescription(currentTeam.description)
@@ -120,7 +121,7 @@ function Team() {
         setName={setName} name={name}
         setDescription={setDescription} description={description}
         handleSubmit={createMode ? createTeam : editTeam}
-        title="Criar equipe"
+        title={createMode ? "Criar equipe" : "Editar equipe"}
         nameLabel="Nome da equipe"
         descriptionLabel="Descrição da equipe"
         namePlaceholder="Digite o nome da equipe"

@@ -137,12 +137,12 @@ function Team() {
         setName={setName} name={name}
         setDescription={setDescription} description={description}
         handleSubmit={createMode ? createChapter : editChapter}
-        title="Criar Capítulo"
+        title={createMode ? "Criar Capítulo" : "Editar Capítulo"}
         nameLabel="Nome do capítulo"
         descriptionLabel="Descrição do capítulo"
         namePlaceholder="Digite o nome do capítulo"
         descriptionPlaceholder="Digite a descrição do capítulo"
-        hasDescription={true}
+        hasDescription={false}
         message={message}
         button={createMode ? "Criar" : "Editar"}
       />}

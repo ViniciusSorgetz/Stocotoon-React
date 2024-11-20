@@ -146,7 +146,7 @@ function Team() {
         setName={setName} name={name}
         setDescription={setDescription} description={description}
         handleSubmit={createMode ? createStory : editStory}
-        title="Criar História"
+        title={createMode ? "Criar história" : "Editar história"}
         nameLabel="Nome da história"
         descriptionLabel="Descrição da história"
         namePlaceholder="Digite o nome da história"

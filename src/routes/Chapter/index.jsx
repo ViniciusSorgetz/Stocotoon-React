@@ -139,12 +139,12 @@ function Team() {
         setName={setName} name={name}
         setDescription={setDescription} description={description}
         handleSubmit={createMode ? createPage : editPage}
-        title="Criar Página"
+        title={createMode ? "Criar página" : "Editar página"}
         nameLabel="Nome da página"
         descriptionLabel="Descrição da página"
         namePlaceholder="Digite o nome da página"
         descriptionPlaceholder="Digite a descrição da página"
-        hasDescription={true}
+        hasDescription={false}
         message={message}
         button={createMode ? "Criar" : "Editar"}
       />}

@@ -8,14 +8,19 @@
 #canvas{
     cursor: crosshair;
     background-color: #1f1f1f;
+    border: 1px solid white;
 }
 .canvas-container{
     display:flex;
-    height: calc(100% - 60px);
-    border-bottom: solid 1px white;
+    justify-content: space-between;
+    height: calc(100% - 42px);
+}
+.canvas-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .drawing-app{
-    width: fit-content;
     height: 100dvh;
 }
 
@@ -23,9 +28,9 @@
 
 .script-container{
     height: 100%;
+    width: 330px;
     display: flex;
     flex-direction: column;
-    padding: 1em 1.2em;
 }
 
 .quill{
@@ -159,7 +164,7 @@ input[type="checkbox"]:hover{
 .layers-container{
     border-style: solid;
     border-color: rgb(255, 255, 255);
-    border-width: 0px 1px 0px 0px;
+    border-width: 0px 1px 1px 1px;
 }
 .layers-box{
     display: flex;

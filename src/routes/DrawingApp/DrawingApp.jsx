@@ -725,14 +725,17 @@ function DrawingApp() {
               </div>
             </div>
           </div>
-          <canvas
-            id="canvas"
-            width="700"
-            height="580"
-            onPointerDown={handleMouseDown}
-            onPointerMove={handleMouseMove}
-            onPointerUp={handleMouseUp}
-          ></canvas>
+          <div className="canvas-box">
+            <canvas
+              id="canvas"
+              width="540"
+              height="540"
+              style={{height: "540px", width: "540px"}}
+              onPointerDown={handleMouseDown}
+              onPointerMove={handleMouseMove}
+              onPointerUp={handleMouseUp}
+            ></canvas>
+          </div>
           <form className="script-container">
             <ReactQuill
               theme="snow"
