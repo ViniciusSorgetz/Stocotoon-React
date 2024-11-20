@@ -54,17 +54,7 @@ const Navbar = () => {
               <Link to={"/"} className="nav-link text-light">
                 Início
               </Link>
-            </li>
-            <li className="nav-item pages-link">
-              <Link to={"/"} className="nav-link text-light">
-                Tutorial
-              </Link>
-            </li>
-            <li className="nav-item pages-link">
-              <Link to={"/"} className="nav-link text-light">
-                Sobre nós
-              </Link>
-            </li>
+            </li> 
             {session && (
               <>
                 <li className="nav-item pages-link">

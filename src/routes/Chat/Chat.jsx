@@ -53,32 +53,6 @@ const Chat = () => {
       <SidebarTimes teams={teams} />
       <SidebarChats teams={teams} />
       <Messages />
-
-      {/* <div className="mt-nav">
-        <p className="text-light">Lista de times</p>
-        <ul>
-          {teams.map((team) => (
-            <li
-              className="text-light"
-              onClick={() => setTeam(team)}
-              key={team.id}
-            >
-              {team.name}
-            </li>
-          ))}
-        </ul>
-      </div> */}
-      {/* <div style={{ marginLeft: "400px"}}>
-        <p className="text-light">Lista de chats</p>
-        {team.chats && (
-          <ul>
-            {team.chats.map((chat) => (
-              <li>{chat.name}</li>
-            ))}
-          </ul>
-        )}
-      </div>
-      <button onClick={() => console.log(teams)} style={{ marginLeft: "400px"}}>Console.log</button> */}
     </div>
   );
 };

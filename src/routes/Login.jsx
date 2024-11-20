@@ -43,6 +43,7 @@ function Login() {
       navigate("/");
     } 
     catch (error) {
+      console.log(error);
       setMessage(error.response.data.message);
     }
 

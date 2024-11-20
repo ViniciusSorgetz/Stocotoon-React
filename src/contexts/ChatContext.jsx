@@ -10,7 +10,7 @@ function ChatProvider({ children }){
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        const newSocket = io("http://localhost:4100", {
+        const newSocket = io("wss://stocotoon-socket-production.up.railway.app", {
             extraHeaders: {
               //token: session.UserToken,
               //ChatId: chatId
