@@ -28,4 +28,7 @@ Este frontend é de um site feito como Trabalho de Conclusão de Curso de uma Es
 - Rough.js e perfect-freehand
   - Ambas bibliotecas foram utilizadas na ferramenta de desenho do site
 
+### Figma
+Caso esteja interessado em ver o protótipo da aplicação: [Protótipo](https://www.figma.com/design/cSQHWSH6XybpKRTxox5FRz/Site---Stocotoon?node-id=0-1&t=cKe3xaoQU11QaWn9-1)
+
 
