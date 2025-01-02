@@ -1,7 +1,7 @@
 
 # Stocotoon React
 
-## Frontend de um site para criação e organização de storyboards de Histórias em Quadrinho
+## Frontend de um site para criação e organização de storyboards de Histórias em Quadrinhos
 
 Este frontend é de um site feito como Trabalho de Conclusão de Curso de uma Escola de Ensino Médio Técnica. O objetivo do site é auxiliar na criação de storybords, fazendo isso através de diversas funcionalidades.
 
