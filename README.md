@@ -1,7 +1,7 @@
 
 # Stocotoon React
 
-- [Conferir Backend]([https://stocotoon.netlify.app/](https://github.com/ViniciusSorgetz/Stocotoon_API))
+- [Conferir Backend](https://github.com/ViniciusSorgetz/Stocotoon_API)
 
 ## Frontend de um site para criação e organização de storyboards de Histórias em Quadrinhos
 
