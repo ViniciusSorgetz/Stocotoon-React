@@ -1,36 +1,31 @@
+# ⚛ Stocotoon React
 
-# Stocotoon React
+- [Check Backend](https://github.com/ViniciusSorgetz/Stocotoon_API)
 
-- [Conferir Backend](https://github.com/ViniciusSorgetz/Stocotoon_API)
+## 🖥️ Frontend of a website for creating and organizing comic book storyboards
 
-## Frontend de um site para criação e organização de storyboards de Histórias em Quadrinhos
+This frontend was developed as a Final Course Project for a Technical High School. The main goal of the platform is to assist in storyboard creation through a variety of features.
 
-Este frontend é de um site feito como Trabalho de Conclusão de Curso de uma Escola de Ensino Médio Técnica. O objetivo do site é auxiliar na criação de storybords, fazendo isso através de diversas funcionalidades.
+### 🚀 Main Features
+- Login system  
+- Team management  
+  - Add member, remove member, edit team name and description  
+- File organization by team, story, and chapter  
+- Real-time team chat  
+- Drawing tool for storyboards  
+- Writing tool for scripts  
 
-### Site hospedado 
-- Hospedagem expira em 17/01/2025
-- Entre para um pequeno tuor em suas funcionalidades através da página inicial - [Stocotoon](https://stocotoon.netlify.app/)
+### 🛠️ Main Technologies Used
+- JavaScript  
+- React  
+- Bootstrap  
+- Socket.io  
+- React Quill  
+  - Library used to create rich text editors  
+- Rough.js and perfect-freehand  
+  - Both libraries were used to build the drawing tool  
 
-### Principais funcionalidades
-- Sistema de Login
-- Gerenciamento de equipes
-  - Adicionar membro, remover membro, alterar descrição e nome da equipe
-- Organização dos arquivos por time, história e capítulo
-- Chat em tempo real para equipes
-- Ferramenta de desenho para storyboards
-- Ferramenta de escrita para roteiros
+### If you are interested in viewing the application prototype:
+- [🎨 Figma](https://www.figma.com/design/cSQHWSH6XybpKRTxox5FRz/Site---Stocotoon?node-id=0-1&t=cKe3xaoQU11QaWn9-1)
 
-### Principais tecnologias utilizadas
-- JavaScript
-- React
-- Bootstrap
-- Socket_io
-- React Quill
-  - Biblioteca para criar editores de texto
-- Rough.js e perfect-freehand
-  - Ambas bibliotecas foram utilizadas na ferramenta de desenho do site
-
-### Figma
-Caso esteja interessado em ver o protótipo da aplicação: [Protótipo](https://www.figma.com/design/cSQHWSH6XybpKRTxox5FRz/Site---Stocotoon?node-id=0-1&t=cKe3xaoQU11QaWn9-1)
-
-
+- [🎨 Behance](https://www.behance.net/gallery/221814629/Stocotoon)
